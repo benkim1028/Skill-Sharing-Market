@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 import "../css/component.css";
 
 class Login extends Component {
@@ -11,7 +12,9 @@ class Login extends Component {
             password: '',
             status:true,
             fakeUsername: "benkim1028",
-            fakePassword: "legend"
+            fakePassword: "legend",
+            authenticated: false,
+            token: null
 
         };
 
@@ -26,17 +29,24 @@ class Login extends Component {
     }
 
     handleSubmit(event) {
-        alert(this.state.username + " and " + this.state.password+" , " + this.state.fakeUsername+ " and " + this.state.fakePassword);
+        let currentpage = this;
         this.validate();
+        axios({
+            method: 'post',
+            url: 'http://localhost:8080/webapi/signin',
+            data: {
+                username: this.state.username,
+                password: this.state.password},
+            mode: 'cors'
+        }).then(function(response){
+            if(response.status == 200) {
+                currentpage.setState({token: response.data, authenticated: true});
+                console.log("token : " + currentpage.state.token + "authenticated: " + currentpage.state.authenticated);
+                console.log(response);
+                currentpage.props.history.push({pathname: '/', state: {authenticated: true}});
+            }
+        });
         event.preventDefault();
-        // fetch('https://localhost:8080/auth/Authentication', {
-        //     method: 'post',
-        //     headers: {'Content-Type':'application/json'},
-        //     body: {
-        //         "username": this.username.value,
-        //         "password": this.password.value
-        //     }
-        // });
     };
 
     forgotPassword() {

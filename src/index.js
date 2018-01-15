@@ -7,14 +7,16 @@ import './css/index.css';
 
 import Login from './components/Login'
 import SignUp from './components/SignUp'
+import Main from './components/Main'
 
 
 const Root = () => {
     return (
         <BrowserRouter>
             <div className="container">
-                <Route exact path="/" component={Login}/>
+                <Route exact path="/" component={Main}/>
                 <Route path="/signUp" component={SignUp}/>
+                <Route path="/signIn" component={Login}/>
             </div>
         </BrowserRouter>
     )
