@@ -20,8 +20,6 @@ class Login extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.forgotPassword = this.forgotPassword.bind(this);
-        this.validate = this.validate.bind(this);
     }
 
     handleChange({target}) {
@@ -30,7 +28,6 @@ class Login extends Component {
 
     handleSubmit(event) {
         let currentpage = this;
-        this.validate();
         axios({
             method: 'post',
             url: 'http://localhost:8080/webapi/signin',
@@ -41,30 +38,18 @@ class Login extends Component {
         }).then(function(response){
             if(response.status == 200) {
                 currentpage.setState({token: response.data, authenticated: true});
+
+                //save the token in the localStorage of the user's browser
+                localStorage.setItem('token', response.data);
+
                 console.log("token : " + currentpage.state.token + "authenticated: " + currentpage.state.authenticated);
-                console.log(response);
+                console.log("storage token:" + localStorage.getItem('token'));
+
                 currentpage.props.history.push({pathname: '/', state: {authenticated: true}});
             }
         });
         event.preventDefault();
     };
-
-    forgotPassword() {
-        alert("direct to a new page");
-    }
-
-    signUp() {
-        alert("direct to a sign-up page")
-    }
-
-    validate() {
-        if(this.state.fakeUsername == this.state.username && this.state.fakePassword == this.state.password){
-            this.setState({status: true});
-        } else {
-            this.setState({status: false});
-        }
-    }
-
 
     render() {
         const loginStatus = this.state.status;
@@ -82,7 +67,7 @@ class Login extends Component {
                                    onChange={this.handleChange}/><br />
                             <input className="form-control" placeholder="Password" name="password" type="text" value={this.state.password}
                                    onChange={this.handleChange}/><br />
-                            <input type="checkbox"/>remember me · <a href="" onClick={this.forgotPassword}>Forgot
+                            <input type="checkbox"/>remember me · <a href="">Forgot
                             password?</a><br/>
                             <button className="btn btn-block btn-primary" type="Submit">Log in</button>
                         </form>
