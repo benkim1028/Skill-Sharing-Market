@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 import "../css/component.css";
 import axios from 'axios';
+import Header from "./Common/Header";
+import Footer from "./Common/Footer";
 
 class SignUp extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            email: '',
+            username: '',
             password: '',
-            f_name: '',
-            color: ''
-
+            name: '',
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -22,22 +22,21 @@ class SignUp extends Component {
     }
 
     handleSubmit(event) {
+        let currentpage = this;
         var options = {
-            method: 'POST',
-            url: 'https://benkim1028.auth0.com/dbconnections/signup',
-            headers: {'content-type': 'application/json'},
+            method: 'post',
+            url: 'http://localhost:8080/webapi/signup',
             data: {
-                client_id: '_eNxrDi3ERRHYrQaHpcwuKO7T3QVdJOn',
-                email: this.state.email,
+                username: this.state.username,
                 password: this.state.password,
-                connection: "Username-Password-Authentication",
-                user_metadata: {name: this.state.f_name, color: this.state.color}
+                name: this.state.name,
             },
         };
         axios(options).then(function (response) {
-            alert(response.toString());
-        }).catch(function (error) {
-            alert(error.toString());
+            alert("Successfully created a user. Login with the created credential");
+            if (response.status === 200) {
+                currentpage.props.history.push({pathname: '/signIn'});
+            }
         });
         event.preventDefault();
     };
@@ -45,27 +44,39 @@ class SignUp extends Component {
 
     render() {
         return (
-            <div className="text-center">
-                <form id="signup" onSubmit={this.handleSubmit}>
-                    <h2>Sign up</h2>
-                    <p>
-                        <input className="form-control" placeholder="Email" name="email" type="text"
-                               value={this.state.email}
-                               onChange={this.handleChange}/></p>
-                    <p>
-                        <input className="form-control" type="password" placeholder="Password" name="password"
-                               value={this.state.password} onChange={this.handleChange} required/>
-                    </p>
-                    <p>
-                        <input className="form-control" type="text" placeholder="Full name" name="f_name"
-                               value={this.state.f_name} onChange={this.handleChange} required/>
-                    </p>
-                    <p>
-                        <input className="form-control" type="text" placeholder="Favorite color" name="color"
-                               value={this.state.color} onChange={this.handleChange}/>
-                    </p>
-                    <input className="btn btn-block btn-primary" type="submit" value="Sign up"/>
-                </form>
+            <div>
+                <Header/>
+                <div className="container text-center">
+                    <div className="border-bottom">
+                        <h2>Sign up</h2>
+                    </div>
+                    <div className="row align-items-center">
+                        <div className="col"></div>
+                        <div className="col text-left">
+                            <br/>
+                            <form id="signup" onSubmit={this.handleSubmit}>
+                                <p>
+                                    <input className="form-control" placeholder="Username" name="username" type="text"
+                                           value={this.state.username}
+                                           onChange={this.handleChange}/></p>
+                                <p>
+                                    <input className="form-control" type="password" placeholder="Password"
+                                           name="password"
+                                           value={this.state.password} onChange={this.handleChange} required/>
+                                </p>
+                                <p>
+                                    <input className="form-control" type="text" placeholder="Full name" name="name"
+                                           value={this.state.f_name} onChange={this.handleChange} required/>
+                                </p>
+                                <input className="btn btn-block btn-primary" type="submit" value="Sign up"/>
+                            </form>
+                            <br/>
+                        </div>
+                        <div className="col"></div>
+                    </div>
+                    <div className="border-top"/>
+                </div>
+                <Footer/>
             </div>
         )
     }

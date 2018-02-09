@@ -1,5 +1,9 @@
 import React, {Component} from 'react';
 import "../css/component.css";
+import Header from "./Common/Header";
+import Button from "react-bootstrap/es/Button";
+import Jumbotron from "react-bootstrap/es/Jumbotron";
+import Footer from "./Common/Footer";
 
 class Main extends Component {
     constructor(props) {
@@ -12,9 +16,9 @@ class Main extends Component {
 
     button() {
         if (this.state.authenticated) {
-            return (<button onClick={() => this.setState({authenticated: false})}>Logout</button>)
+            return (<Button bsStyle="primary" onClick={() => this.setState({authenticated: false})}>Logout</Button>)
         } else {
-            return (<button onClick={() => this.props.history.push({pathname: '/signIn'})}>Login</button>)
+            return (<Button bsStyle="primary" onClick={() => this.props.history.push({pathname: '/signIn'})}>Login</Button>)
         }
     }
 
@@ -28,9 +32,12 @@ class Main extends Component {
     render() {
         return (
             <div>
-                <h1>This is main page</h1>
-                {this.button()}
-                <p>not working</p>
+                <Header/>
+                <Jumbotron className="container">
+                    <h1>This is main page</h1>
+                    {this.button()}
+                </Jumbotron>
+                <Footer/>
             </div>
         )
     }

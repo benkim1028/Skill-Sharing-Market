@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios/index";
+import Header from "./Common/Header";
 
 
 class Test extends Component {
@@ -29,6 +30,7 @@ class Test extends Component {
         return(
             <div>
                 <h1>why this one is not working sssssssssssss</h1>
+                <Header/>
                 <p>{this.state.data}</p>
                 <p>this one should work</p>
             </div>

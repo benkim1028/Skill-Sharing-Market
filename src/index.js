@@ -5,7 +5,7 @@ import {BrowserRouter} from 'react-router-dom';
 import './css/index.css';
 
 
-import Login from './components/Login'
+import Login from './components/SignIn'
 import SignUp from './components/SignUp'
 import Main from './components/Main'
 import Test from './components/Test'
@@ -14,7 +14,7 @@ import Test from './components/Test'
 const Root = () => {
     return (
         <BrowserRouter>
-            <div className="container">
+            <div>
                 <Route exact path="/" component={Main}/>
                 <Route path="/signUp" component={SignUp}/>
                 <Route path="/signIn" component={Login}/>
