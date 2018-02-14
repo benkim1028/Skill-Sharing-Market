@@ -20,7 +20,7 @@ class Test extends Component {
             url: 'http://localhost:8080/webapi/testing',
             mode: 'cors'
         }).then(function(response){
-            if(response.status == 200){
+            if(response.status === 200){
                 currentpage.setState({data: response.data})
             }
         });
@@ -29,8 +29,8 @@ class Test extends Component {
     render(){
         return(
             <div>
-                <h1>why this one is not working sssssssssssss</h1>
                 <Header/>
+                <h1>why this one is not working sssssssssssss</h1>
                 <p>{this.state.data}</p>
                 <p>this one should work</p>
             </div>

@@ -12,6 +12,11 @@ class Main extends Component {
             authenticated: false
         };
         this.button = this.button.bind(this);
+        this.logout = this.logout.bind(this);
+    }
+    logout() {
+        this.setState({authenticated: false});
+        localStorage.removeItem('token');
     }
 
     button() {
