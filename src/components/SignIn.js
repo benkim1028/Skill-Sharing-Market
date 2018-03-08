@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import "../css/component.css";
-import Header from "./Common/Header";
-import Footer from "./Common/Footer";
+// import Header from "./Common/Header";
+// import Footer from "./Common/Footer";
 
 class Login extends Component {
     constructor(props) {
@@ -56,7 +55,7 @@ class Login extends Component {
         const loginStatus = this.state.status;
         return (
             <div>
-                <Header/>
+                {/*<Header/>*/}
                 <div className="container text-center">
                     <div className="border-bottom">
                         <h2>Log in</h2>
@@ -84,7 +83,7 @@ class Login extends Component {
                         <p>Don't have an account? <Link to="/signUp"><a>Sign up</a></Link></p>
                     </div>
                 </div>
-                <Footer/>
+                {/*<Footer/>*/}
             </div>
         )
     }

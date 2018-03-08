@@ -1,47 +1,49 @@
 import React, {Component} from 'react';
-import "../css/component.css";
 import Header from "./Common/Header";
-import Button from "react-bootstrap/es/Button";
-import Jumbotron from "react-bootstrap/es/Jumbotron";
 import Footer from "./Common/Footer";
+import {Link} from "react-router-dom";
+import background from '../css/background.jpg';
 
 class Main extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            authenticated: false
-        };
-        this.button = this.button.bind(this);
-        this.logout = this.logout.bind(this);
-    }
-    logout() {
-        this.setState({authenticated: false});
-        localStorage.removeItem('token');
-    }
-
-    button() {
-        if (this.state.authenticated) {
-            return (<Button bsStyle="primary" onClick={() => this.setState({authenticated: false})}>Logout</Button>)
-        } else {
-            return (<Button bsStyle="primary" onClick={() => this.props.history.push({pathname: '/signIn'})}>Login</Button>)
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.location.state != null) {
-            this.setState({authenticated: this.props.location.state.authenticated})
-        }
-        console.log("location : " + this.props.location);
-    }
-
     render() {
+        const css = {
+            backgroundImage: 'url(' + background +' )',
+            backgroundSize: 'cover'};
         return (
             <div>
                 <Header/>
-                <Jumbotron className="container">
-                    <h1>This is main page</h1>
-                    {this.button()}
-                </Jumbotron>
+                <div className="jumbotron" style={css}>
+                    <div className="container text-white">
+                        <h1 className="display-3">Want to learn?</h1>
+                        <p>This is a place where you can show off your talent or learn new skills from other talented professionals</p>
+                        <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-md-4">
+                            <h2>Sports</h2>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+                                commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam
+                                porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                            <p><Link className="btn btn-secondary" to="/">View details &raquo;</Link></p>
+                        </div>
+                        <div className="col-md-4">
+                            <h2>Music</h2>
+                            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus
+                                commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam
+                                porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                            <p><Link className="btn btn-secondary" to="/">View details &raquo;</Link></p>
+                        </div>
+                        <div className="col-md-4">
+                            <h2>Cooking</h2>
+                            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam.
+                                Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus
+                                commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+                            <p><Link className="btn btn-secondary" to="/">View details &raquo;</Link></p>
+                        </div>
+                    </div>
+                </div>
                 <Footer/>
             </div>
         )
