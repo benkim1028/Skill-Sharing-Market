@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwt from 'jsonwebtoken';
 
 export const SIGN_IN_SUCCESSFUL = 'sign_in_successful';
 export const SIGN_IN_FAILED = 'sign_in_failed';
@@ -25,6 +26,9 @@ export function signIn(values, callback) {
             ({data}) => {
                 localStorage.setItem("user", data.token);
                 dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
+                let token = jwt.decode(data.token);
+                console.log(token);
+                console.log(new Date(token.exp));
                 callback();
             }).catch(
             () => dispatch({type: SIGN_IN_FAILED, payload: "Wrong Username or Password"}
@@ -33,22 +37,22 @@ export function signIn(values, callback) {
     }
 }
 
-export function signOut(callback){
+export function signOut(callback) {
     localStorage.clear();
     callback();
-    return{
+    return {
         type: SIGN_OUT
     }
 }
 
 export function signUp(values, callback) {
 
-        const request = axios({
-            method: 'post',
-            url: 'http://localhost:8080/webapi/signup',
-            data: values,
-            mode: 'cors'
-        });
+    const request = axios({
+        method: 'post',
+        url: 'http://localhost:8080/webapi/signup',
+        data: values,
+        mode: 'cors'
+    });
     return (dispatch) => {
         request.then(
             ({}) => {

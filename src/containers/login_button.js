@@ -20,12 +20,12 @@ class loginButton extends Component {
     loginOrLogout() {
         if (this.props.authenticated) {
             return (
-                <button className="btn btn-outline-success my-2 my-sm-0"
+                <button className="btn btn-outline-light my-2 my-sm-0"
                         onClick={() => this.onClickSignOut()}>SignOut</button>
             )
         } else {
             return (
-                <Link className="btn btn-outline-success my-2 my-sm-0" to='/signin'>SignIn</Link>
+                <Link className="btn btn-outline-light my-2 my-sm-0" to='/signin'>SignIn</Link>
             )
 
         }

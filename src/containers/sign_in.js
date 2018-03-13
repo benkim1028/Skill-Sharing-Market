@@ -5,6 +5,7 @@ import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import { signIn } from "../actions";
+import {CircularProgress, Paper, RaisedButton, TextField} from "material-ui";
 
 class Login extends Component {
     constructor(props) {
@@ -16,7 +17,7 @@ class Login extends Component {
         if (this.props.error){
             return(
                 <div className="text-danger">
-                    {this.props.error}
+                    <p className="errorText">{this.props.error}</p>
                 </div>
             )
         }
@@ -24,20 +25,15 @@ class Login extends Component {
 
     renderField(field) {
         const {meta: {touched, error}} = field;
-        const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+        // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (
-            <div className={className}>
-                <label>{field.label}</label>
-                <input
-                    className="form-control"
-                    type="text"
+                <TextField
+                    hintText={field.label}
+                    floatingLabelText={field.label}
+                    errorText={touched && error}
                     {...field.input}
                 />
-                <div className="text-danger">
-                    {touched ? error : ''}
-                </div>
-            </div>
         )
     }
 
@@ -58,24 +54,26 @@ class Login extends Component {
                 <Header/>
                 <div className="container text-center">
                     <div className="border-bottom">
-                        <h2>Log in</h2>
+                        <h2 className="text">Log in</h2>
                     </div>
                     <div className="row align-items-center">
-                        <div className="col"></div>
-                        <div className="col text-left">
+                        <div className="col"/>
+                        <div className="col text-center align-content-center">
+                            <Paper>
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
                                 <Field className="form-control" label="Password" name="password" component={this.renderField}/><br/>
-                                <button className="btn btn-primary" type="Submit">Log in</button>
-                                <Link to="/" className="btn btn-danger">Cancel</Link>
+                                <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
+                                <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
                                 {this.errorMessage()}
                             </form>
+                            </Paper>
                             <br/>
                         </div>
-                        <div className="col"></div>
+                        <div className="col"/>
                     </div>
                     <div className="border-top">
-                        <p>Don't have an account? <Link to="/signUp">Sign up</Link></p>
+                        <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
                     </div>
                 </div>
                 <Footer/>

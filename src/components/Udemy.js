@@ -4,8 +4,6 @@ import SearchBar from './Udemy/search_bar';
 import VideoList from './Udemy/video_list';
 import VideoDetail from './Udemy/video_detail';
 import YTSearch from 'youtube-api-search';
-import NavBar1 from "./Common/NavBar1";
-import NavBar2 from "./Common/NavBar2";
 
 const API_KEY = "AIzaSyB5eD_wWeBBi44frbGcMy6B6rzZYR96CUY";
 
@@ -37,7 +35,6 @@ class Udemy extends React.Component{
 
         return(
             <div>
-                <NavBar1 />
                 <SearchBar onSearchTermChange={videoSearch} />
                 <VideoDetail video={this.state.selectedVideo} />
                 <VideoList
