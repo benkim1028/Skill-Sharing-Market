@@ -4,6 +4,7 @@ import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
 import {Divider, FontIcon, IconButton} from "material-ui";
 import {fullWhite} from 'material-ui/styles/colors';
+import history from '../history'
 
 export default class DrawerMenu extends React.Component {
 
@@ -34,7 +35,7 @@ export default class DrawerMenu extends React.Component {
                     <MenuItem onClick={this.handleClose}>Science</MenuItem>
                     <MenuItem onClick={this.handleClose}>Arts</MenuItem>
                     <Divider />
-                    <MenuItem onClick={this.handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={() => history.push("/profile")}>Profile</MenuItem>
                     <MenuItem onClick={this.handleClose}>Setting</MenuItem>
                 </Drawer>
             </div>

@@ -5,7 +5,8 @@ import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import {signUp} from "../actions";
-import {Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
+import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
+import normalizePhone from "../components/Tools/normalizePhone";
 
 class SignUp extends Component {
 
@@ -21,6 +22,16 @@ class SignUp extends Component {
         })
     }
 
+    errorMessage(){
+        if (this.props.error){
+            return(
+                <div className="text-danger">
+                    <p className="errorText">{this.props.error}</p>
+                </div>
+            )
+        }
+    }
+
     renderField(field) {
         const {meta: {touched, error}} = field;
 
@@ -31,6 +42,21 @@ class SignUp extends Component {
                 errorText={touched && error}
                 {...field.input}
             />
+        )
+    }
+
+    renderDatePicker(field) {
+        const {meta: { touched, error }, input} = field;
+        return(
+            <DatePicker
+                errorText={touched && error}
+                {...input}
+                value={input.value !== '' ? new Date(input.value) : null}
+                floatingLabelText={field.label}
+                onChange={(event, value) => {
+                    console.log(value);
+                    input.onChange(value)
+                }}/>
         )
     }
 
@@ -63,23 +89,27 @@ class SignUp extends Component {
                         <div className="col text-center align-content-center">
                             <Paper>
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
-                                <Field label="Firstname" name="firstname"
-                                       component={this.renderField}/><br/>
-                                <Field label="Lastname" name="lastname"
-                                       component={this.renderField}/><br/>
                                 <Field label="Choose your username" name="username"
                                        component={this.renderField}/><br/>
                                 <Field label="Create a password" name="password"
                                        component={this.renderField}/><br/>
                                 <Field label="Confirm your password" name="password2"
                                        component={this.renderField}/><br/>
-                                <Field name="sex" component={this.renderRadioGroup}>
+                                <Field label="First name" name="firstname"
+                                       component={this.renderField}/><br/>
+                                <Field label="Last name" name="lastname"
+                                       component={this.renderField}/><br/>
+                                <Field label="Phone Number" name="phonenumber"
+                                        component={this.renderField} normalize={normalizePhone}/><br/>
+                                <Field label="Birth Date" name="birthdate" component={this.renderDatePicker} hintText="Birth Date" autoOk={true} /><br/>
+                                <Field name="gender" component={this.renderRadioGroup}>
                                     <RadioButton value="male" label="male" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
                                     <RadioButton value="female" label="female" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
                                 </Field><br/>
                                 <RaisedButton type="submit" label="Sign Up" primary={true} style={{margin: 'auto'}}/>
                                 <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel"
                                               secondary={true} style={{margin: '15px'}}/>
+                                {this.errorMessage()}
                             </form>
                             </Paper>
                         </div>
@@ -115,8 +145,14 @@ function validate(values) {
     if (values.password !== values.password2) {
         errors.password2 = "Password is not equal!"
     }
-    if (!values.sex) {
-        errors.sex = "Select your gender"
+    if (!values.phonenumber){
+        errors.phonenumber = "Enter your phone number"
+    }
+    if (!values.gender) {
+        errors.gender = "Select your gender"
+    }
+    if(!values.birthdate){
+        errors.birthdate = "Select your birth date"
     }
 
     // If errors is empty, the form is fine to submit
@@ -124,10 +160,13 @@ function validate(values) {
     return errors;
 }
 
+function mapStateToProps(state){
+    return { error: state.signup.error }
+}
 
 export default reduxForm({
     validate: validate,
     form: 'PostsNewForm'
 })(
-    connect(null, {signUp})(SignUp)
+    connect(mapStateToProps, {signUp})(SignUp)
 );

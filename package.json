@@ -36,7 +36,7 @@
     "webpack-dev-server": "^1.14.0"
   },
   "scripts": {
-    "dev-start": "webpack-dev-server",
+    "dev-start": "webpack-dev-server --inline --hot",
     "postinstall": "webpack -p",
     "start": "node server.js"
   }

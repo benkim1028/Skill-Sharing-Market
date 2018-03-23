@@ -20,6 +20,7 @@ import history from './history'
 import Udemy from "./components/Udemy";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import Profile from "./containers/profile";
 
 
 const createStoreWithMiddleware = applyMiddleware(promise, reduxThunk)(createStore);
@@ -39,6 +40,7 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
+                        <Route path="/profile" component={Profile}/>
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
                         <Route path="/" component={Main}/>
