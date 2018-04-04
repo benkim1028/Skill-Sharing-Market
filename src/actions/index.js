@@ -36,6 +36,7 @@ export function signIn(values, callback) {
                 console.log(token);
                 console.log(new Date(token.exp));
                 callback();
+                createAlertBar("Signed In Successfully");
             }).catch(
             () => dispatch({type: SIGN_IN_FAILED, payload: "Wrong Username or Password"}
             )
