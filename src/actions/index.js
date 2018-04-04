@@ -10,6 +10,7 @@ export const SIGN_UP_FAILED = 'sign_up_failed';
 export const FETCH_PROFILE = 'fetched_profile';
 
 export const CREATE_ALERT_BAR = 'create_alert_bar';
+export const CLOSE_ALERT_BAR = 'close_alert_bar';
 
 /*
     request: {username: benkim1028, password: Tkflzls1!}
@@ -54,6 +55,11 @@ export function createAlertBar(message) {
     return {
         type: CREATE_ALERT_BAR,
         payload: message
+    }
+}
+export function closeAlertBar() {
+    return {
+        type: CLOSE_ALERT_BAR,
     }
 }
 
