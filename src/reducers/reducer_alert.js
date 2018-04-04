@@ -1,6 +1,6 @@
 import {CREATE_ALERT_BAR, CLOSE_ALERT_BAR} from "../actions";
 
-export default function (state = {open: false, message=""}, action) {
+export default function (state = {open: false, message: ""}, action) {
 
     switch (action.type) {
         case CREATE_ALERT_BAR:
