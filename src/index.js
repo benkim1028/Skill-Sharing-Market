@@ -16,6 +16,7 @@ import Main from './components/Main'
 import Secret from './components/Secret'
 import requireAuth from './containers/required_auth';
 import noRequireAuth from './containers/no_require_auth';
+import AlertBar from './containers/alert_bar';
 import history from './history'
 import Udemy from "./components/Udemy";
 
@@ -45,6 +46,7 @@ ReactDOM.render(
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
                         <Route path="/" component={Main}/>
                     </Switch>
+                    <AlertBar/>
                 </div>
             </Router>
         </Provider>
