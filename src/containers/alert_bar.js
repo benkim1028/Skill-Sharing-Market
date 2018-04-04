@@ -13,7 +13,6 @@ class AlertBar extends Component {
           open={this.props.alert.open}
           message={this.props.alert.message}
           autoHideDuration={2000}
-          onRequestClose={this.props.closeAlertBar()}
         />
       </div>
     );
