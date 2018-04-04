@@ -1,32 +1,26 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import Snackbar from 'material-ui/Snackbar';
 import RaisedButton from 'material-ui/RaisedButton';
 
-export default class AlertBar extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: true,
-    };
-  }
-
-  handleRequestClose = () => {
-    this.setState({
-      open: false,
-    });
-  };
+class AlertBar extends Component {
 
   render() {
     return (
       <div>
         <Snackbar
-          open={this.state.open}
-          message={this.props.message}
-          autoHideDuration={3000}
-          onRequestClose={this.handleRequestClose}
+          open={this.props.alert.open}
+          message={this.props.alert.message}
+          autoHideDuration={2000}
+          onRequestClose={this.props.createAlertBar()}
         />
       </div>
     );
   }
 }
+
+function mapStateToProps(state){
+  return { alert: state.alert }
+}
+
+export default connect(mapStateToProps, {createAlertBar})(AlertBar);
