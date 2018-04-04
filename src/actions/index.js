@@ -9,6 +9,8 @@ export const SIGN_UP_SUCCESSFUL = 'sign_up_successful';
 export const SIGN_UP_FAILED = 'sign_up_failed';
 export const FETCH_PROFILE = 'fetched_profile';
 
+export const CREATE_ALERT_BAR = 'create_alert_bar';
+
 /*
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
@@ -45,6 +47,13 @@ export function signOut(callback) {
     callback();
     return {
         type: SIGN_OUT
+    }
+}
+
+export function createAlertBar(message) {
+    return {
+        type: CREATE_ALERT_BAR,
+        payload: message
     }
 }
 
