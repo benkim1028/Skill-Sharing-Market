@@ -11,9 +11,9 @@ class Header extends Component{
     
     selectStyle(){
         if(this.props.main)
-            return {position: 'absolute', backgroundColor: 'transparent'}
+            return {position: 'absolute', backgroundColor: 'transparent', height: 50}
         else 
-            return {}
+            return {height: 50}
     }
 
 
