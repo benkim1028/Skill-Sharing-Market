@@ -17,6 +17,7 @@ import Secret from './components/Secret'
 import requireAuth from './containers/required_auth';
 import noRequireAuth from './containers/no_require_auth';
 import AlertBar from './containers/alert_bar';
+import Loading from './containers/loading';
 import history from './history'
 import Udemy from "./components/Udemy";
 
@@ -41,12 +42,13 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
-                        <Route path="/profile" component={Profile}/>
+                        <Route path="/profile" component={requireAuth(Profile)}/>
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
                         <Route path="/" component={Main}/>
                     </Switch>
                     <AlertBar/>
+                    <Loading/>
                 </div>
             </Router>
         </Provider>

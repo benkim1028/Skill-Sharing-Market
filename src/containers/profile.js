@@ -3,12 +3,12 @@ import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import {Divider, List, ListItem, Paper} from "material-ui";
 import {connect} from "react-redux";
-import {fetchProfile} from "../actions";
+import {fetchProfile, showLoading} from "../actions";
 
 class Profile extends Component {
 
     componentDidMount() {
-
+        this.props.showLoading();
         this.props.fetchProfile();
     }
 
@@ -47,10 +47,12 @@ class Profile extends Component {
                     <Footer/>
                 </div>
             )
-        }
-        else {
+        } else {
             return (
-                <div> Loading... </div>
+                <div>
+                    <Header/>
+                    <Footer/>
+                </div>
             )
         }
     }
@@ -58,8 +60,8 @@ class Profile extends Component {
 }
 
 function mapStateToProps(state) {
-    console.log(state.user)
+    console.log(state.user);
     return {profile: state.user};
 }
 
-export default connect(mapStateToProps, {fetchProfile: fetchProfile})(Profile);
+export default connect(mapStateToProps, {fetchProfile, showLoading})(Profile);

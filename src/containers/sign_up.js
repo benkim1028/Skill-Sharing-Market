@@ -4,7 +4,7 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
-import {signUp} from "../actions";
+import {signUp, showLoading} from "../actions";
 import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
 import normalizePhone from "../components/Tools/normalizePhone";
 
@@ -17,6 +17,7 @@ class SignUp extends Component {
 
     handleSubmit(values) {
         console.log(values);
+        this.props.showLoading();
         this.props.signUp(values, () => {
             this.props.history.push('/signin');
         })
@@ -168,5 +169,5 @@ export default reduxForm({
     validate: validate,
     form: 'PostsNewForm'
 })(
-    connect(mapStateToProps, {signUp})(SignUp)
+    connect(mapStateToProps, {signUp, showLoading})(SignUp)
 );

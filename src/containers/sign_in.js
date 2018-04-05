@@ -4,8 +4,8 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
-import { signIn } from "../actions";
-import {CircularProgress, Paper, RaisedButton, TextField} from "material-ui";
+import { signIn, showLoading } from "../actions";
+import {Paper, RaisedButton, TextField} from "material-ui";
 
 class Login extends Component {
     constructor(props) {
@@ -40,6 +40,7 @@ class Login extends Component {
 
     handleSubmit(values) {
         console.log(values);
+        this.props.showLoading();
         this.props.signIn(values, () => {
             this.props.history.push('/');
         })
@@ -107,5 +108,5 @@ export default reduxForm({
     validate: validate,
     form: 'PostsNewForm'
 })(
-    connect(mapStateToProps, {signIn})(Login)
+    connect(mapStateToProps, {signIn, showLoading})(Login)
 );

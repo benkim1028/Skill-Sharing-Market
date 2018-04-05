@@ -14,7 +14,7 @@ class loginButton extends Component {
     onClickSignOut(){
         this.props.signOut( () => {
             history.push('/');
-        })
+        });
         this.props.createAlertBar("Signed Out Successfully");
     }
 

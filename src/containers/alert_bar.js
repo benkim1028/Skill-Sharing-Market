@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Snackbar from 'material-ui/Snackbar';
-import RaisedButton from 'material-ui/RaisedButton';
-import {closeAlertBar} from "../actions"; 
 
 class AlertBar extends Component {
 
@@ -23,4 +21,4 @@ function mapStateToProps(state){
   return { alert: state.alert }
 }
 
-export default connect(mapStateToProps, {closeAlertBar})(AlertBar);
+export default connect(mapStateToProps)(AlertBar);

@@ -5,8 +5,9 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {Divider, FontIcon, IconButton} from "material-ui";
 import {fullWhite} from 'material-ui/styles/colors';
 import history from '../history'
+import {connect} from "react-redux";
 
-export default class DrawerMenu extends React.Component {
+class DrawerMenu extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,6 +17,14 @@ export default class DrawerMenu extends React.Component {
     handleToggle = () => this.setState({open: !this.state.open});
 
     handleClose = () => this.setState({open: false});
+
+    authenticatedMenu() {
+        if (this.props.authenticated) {
+            return (
+                <MenuItem onClick={() => history.push("/profile")}>Profile</MenuItem>
+            )
+        }
+    }
 
     render() {
         return (
@@ -35,10 +44,16 @@ export default class DrawerMenu extends React.Component {
                     <MenuItem onClick={this.handleClose}>Science</MenuItem>
                     <MenuItem onClick={this.handleClose}>Arts</MenuItem>
                     <Divider />
-                    <MenuItem onClick={() => history.push("/profile")}>Profile</MenuItem>
+                    {this.authenticatedMenu()}
                     <MenuItem onClick={this.handleClose}>Setting</MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { authenticated: state.auth.authenticated };
+}
+
+export default connect(mapStateToProps)(DrawerMenu);

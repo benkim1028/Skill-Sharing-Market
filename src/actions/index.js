@@ -12,6 +12,9 @@ export const FETCH_PROFILE = 'fetched_profile';
 export const CREATE_ALERT_BAR = 'create_alert_bar';
 export const CLOSE_ALERT_BAR = 'close_alert_bar';
 
+export const SHOW_LOADING = 'show_loading';
+export const CLOSE_LOADING = 'close_loading';
+
 /*
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
@@ -32,14 +35,18 @@ export function signIn(values, callback) {
             ({data}) => {
                 localStorage.setItem("user", data.token);
                 dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
+                dispatch(closeLoading());
+                dispatch(createAlertBar("Signed In Successfully"));
                 let token = jwt.decode(data.token);
                 console.log(token);
                 console.log(new Date(token.exp));
                 callback();
-                createAlertBar("Signed In Successfully");
             }).catch(
-            () => dispatch({type: SIGN_IN_FAILED, payload: "Wrong Username or Password"}
-            )
+            () => {
+                dispatch({type: SIGN_IN_FAILED, payload: "Wrong Username or Password"});
+                dispatch(closeLoading());
+                dispatch(createAlertBar("Signed In Failed"));
+            }
         );
     }
 }
@@ -53,14 +60,21 @@ export function signOut(callback) {
 }
 
 export function createAlertBar(message) {
-    return {
-        type: CREATE_ALERT_BAR,
-        payload: message
+
+    return (dispatch) => {
+        dispatch({type: CREATE_ALERT_BAR, payload: message});
+        setTimeout (() => dispatch({type: CLOSE_ALERT_BAR}),2000);
     }
 }
-export function closeAlertBar() {
+
+export function showLoading() {
     return {
-        type: CLOSE_ALERT_BAR,
+        type: SHOW_LOADING,
+    }
+}
+export function closeLoading() {
+    return {
+        type: CLOSE_LOADING
     }
 }
 
@@ -74,31 +88,37 @@ export function signUp(values, callback) {
     });
     return (dispatch) => {
         request.then(
-            ({}) => {
+            () => {
                 dispatch({type: SIGN_UP_SUCCESSFUL});
+                dispatch(closeLoading());
+                dispatch(createAlertBar("Signed Up Successfully"));
                 callback();
             }).catch(
-            () => dispatch({type: SIGN_UP_FAILED, payload: "Wrong Username or Password"}
-            )
+            () => {
+                dispatch({type: SIGN_UP_FAILED, payload: "Wrong Username or Password"});
+                dispatch(closeLoading());
+                dispatch(createAlertBar("Sign Up Failed"));
+            }
         );
     }
 }
 
 
 //jwt.decode = {jti: "benkim1028@gmail.com", iat: 1521181033, sub: "123456789", iss: "Ben Kim", exp: 1521181033}
-export function fetchProfile(){
+export function fetchProfile() {
     const token = localStorage.getItem("user");
     // we do not need to check if token exists, required_auth will check if this user is authenticated.
     const request = axios({
         method: 'get',
         url: `${BASE_URL}/profile/info`,
         mode: 'cors',
-        headers: {'Authorization' : `Bearer ${token}`}
+        headers: {'Authorization': `Bearer ${token}`}
     });
     return (dispatch) => {
         request.then(
             ({data}) => {
-                dispatch({type: FETCH_PROFILE, payload: data})
+                dispatch({type: FETCH_PROFILE, payload: data});
+                dispatch(closeLoading());
             }
         )
     }
