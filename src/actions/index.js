@@ -13,7 +13,8 @@ export const FETCH_PROFILE = 'fetched_profile';
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
  */
-const BASE_URL = "https://skillbackend.herokuapp.com/webapi"; //"http://localhost:8080/webapi";
+//const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
+const BASE_URL = "http://localhost:8080/webapi";
 
 
 export function signIn(values, callback) {

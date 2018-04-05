@@ -6,6 +6,7 @@ import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import { signIn } from "../actions";
 import {CircularProgress, Paper, RaisedButton, TextField} from "material-ui";
+import GoogleSignIn from "../components/google_login";
 
 class Login extends Component {
     constructor(props) {
@@ -68,6 +69,7 @@ class Login extends Component {
                                 {this.errorMessage()}
                             </form>
                             </Paper>
+                            <GoogleSignIn/>
                             <br/>
                         </div>
                         <div className="col"/>
