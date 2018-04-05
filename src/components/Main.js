@@ -7,6 +7,7 @@ import background from '../css/background.jpg';
 class Main extends Component {
     render() {
         const css = {
+            paddingTop: 20 + '%',
             minHeight: 600 + 'px',
             backgroundImage: 'url(' + background +' )',
             backgroundSize: 'cover'};
