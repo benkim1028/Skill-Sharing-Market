@@ -12,6 +12,7 @@ const Header = () => (
     <AppBar
         style={{position: 'absolute', backgroundColor: 'transparent'}}
         title="WITHUMB"
+        zDepth={0}
         onTitleClick={() => history.push('/')}
         iconElementRight={<LoginButton/>}
         iconElementLeft={<DrawerMenu />}
