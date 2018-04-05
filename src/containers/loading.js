@@ -7,9 +7,11 @@ import {connect} from "react-redux";
 class Loading extends Component {
     render() {
         return (
-            <div className="text-center align-items-center">
+            <div>
                 <Dialog
                     title="Loading"
+                    titleStyle={{textAlign: "center"}}
+                    contentStyle={{maxWidth: 200}}
                     open={this.props.loading.open}>
                     <RefreshIndicator
                         size={80}
