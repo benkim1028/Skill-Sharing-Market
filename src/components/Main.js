@@ -15,7 +15,7 @@ class Main extends Component {
         };
         return (
             <div>
-                <Header/>
+                <Header main=true />
                 <div className="jumbotron" style={jumbo_css}>
                     <div className="container text-white" style={container_css}>
                         <h1 className="display-3">Want to learn?</h1>
