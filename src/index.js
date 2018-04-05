@@ -49,7 +49,7 @@ ReactDOM.render(
             <Router history={history}>
                 <div>
                     <Switch>
-                        <Route path="/buyNsell" component={BuyAndSellTabs}>
+                        <Route path="/buyNsell" component={BuyAndSellTabs}/>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
                         <Route path="/profile" component={requireAuth(Profile)}/>
