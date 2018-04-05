@@ -5,7 +5,7 @@ import DrawerMenu from "../drawer";
 import history from "../../history";
 
 class Header extends Component{
-    constuctor(props){
+    constructor(props){
         super(props);
     }
     
