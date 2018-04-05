@@ -11,7 +11,7 @@ class Loading extends Component {
                 <Dialog
                     title="Loading"
                     titleStyle={{textAlign: "center"}}
-                    contentStyle={{maxWidth: 200}}
+                    contentStyle={{maxWidth: 150}}
                     open={this.props.loading.open}>
                     <RefreshIndicator
                         size={80}
