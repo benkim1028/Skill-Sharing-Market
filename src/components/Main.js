@@ -6,16 +6,18 @@ import background from '../css/background.jpg';
 
 class Main extends Component {
     render() {
-        const css = {
-            paddingTop: 20 + '%',
-            minHeight: 600 + 'px',
+        const jumbo_css = {
             backgroundImage: 'url(' + background +' )',
-            backgroundSize: 'cover'};
+            backgroundSize: 'cover'
+        };
+        const container_css = {
+            paddingTop: 20 + '%'
+        };
         return (
             <div>
                 <Header/>
-                <div className="jumbotron" style={css}>
-                    <div className="container text-white text-left align-bottom">
+                <div className="jumbotron" style={jumbo_css}>
+                    <div className="container" style={container_css}>
                         <h1 className="display-3">Want to learn?</h1>
                         <p>This is a place where you can show off your talent or learn new skills from other talented professionals</p>
                         <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
