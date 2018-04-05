@@ -17,7 +17,7 @@ class Main extends Component {
             <div>
                 <Header/>
                 <div className="jumbotron" style={jumbo_css}>
-                    <div className="container" style={container_css}>
+                    <div className="container text-white" style={container_css}>
                         <h1 className="display-3">Want to learn?</h1>
                         <p>This is a place where you can show off your talent or learn new skills from other talented professionals</p>
                         <p><a className="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
