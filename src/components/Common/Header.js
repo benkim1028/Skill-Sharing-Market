@@ -8,9 +8,17 @@ import history from "../../history";
  * A simple example of `AppBar` with an icon on the right.
  * By default, the left icon is a navigation-menu.
  */
+const selectStyle = () => {
+    if(this.props.main)
+        return {position: 'absolute', backgroundColor: 'transparent'}
+    else 
+        return {}
+}
+
+
 const Header = () => (
     <AppBar
-        style={{position: 'absolute', backgroundColor: 'transparent'}}
+        style={selectStyle()}
         title="WITHUMB"
         zDepth={0}
         onTitleClick={() => history.push('/')}
