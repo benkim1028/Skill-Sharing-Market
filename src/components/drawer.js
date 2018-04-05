@@ -1,9 +1,12 @@
 import React from 'react';
+
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
 import {Divider, FontIcon, IconButton} from "material-ui";
 import {fullWhite} from 'material-ui/styles/colors';
+
 import history from '../history'
 import {connect} from "react-redux";
 
@@ -38,12 +41,14 @@ class DrawerMenu extends React.Component {
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}
                 >
-                    <MenuItem onClick={this.handleClose}>Sports</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Music</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Cooking</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Science</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Arts</MenuItem>
+                    <Subheader>Items</Subheader>
+                    <MenuItem onClick={() => history.push("/buyNsell")}>Sports</MenuItem>
+                    <MenuItem onClick={() => history.push("/buyNsell")}>Music</MenuItem>
+                    <MenuItem onClick={() => history.push("/buyNsell")}>Cooking</MenuItem>
+                    <MenuItem onClick={() => history.push("/buyNsell")}>Science</MenuItem>
+                    <MenuItem onClick={() => history.push("/buyNsell")}>Arts</MenuItem>
                     <Divider />
+                    <Subheader>Personal</Subheader>
                     {this.authenticatedMenu()}
                     <MenuItem onClick={this.handleClose}>Setting</MenuItem>
                 </Drawer>
