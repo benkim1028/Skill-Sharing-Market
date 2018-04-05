@@ -22,6 +22,7 @@ import history from './history'
 import Udemy from "./components/Udemy";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import muiTheme from './css/mui_theme';
 import Profile from "./containers/profile";
 
 
@@ -35,7 +36,7 @@ if (user) {
 }
 
 ReactDOM.render(
-    <MuiThemeProvider>
+    <MuiThemeProvider muiTheme={getMuiTheme(muiTheme)}>
         <Provider store={store}>
             <Router history={history}>
                 <div>
