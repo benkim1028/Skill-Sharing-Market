@@ -22,6 +22,7 @@ import history from './history'
 import Udemy from "./components/Udemy";
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import muiTheme from './css/mui_theme';
 import Profile from "./containers/profile";
 
