@@ -167,7 +167,7 @@ function mapStateToProps(state){
 
 export default reduxForm({
     validate: validate,
-    form: 'PostsNewForm'
+    form: 'SignUpForm'
 })(
     connect(mapStateToProps, {signUp, showLoading})(SignUp)
 );

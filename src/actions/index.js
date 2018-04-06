@@ -15,11 +15,16 @@ export const CLOSE_ALERT_BAR = 'close_alert_bar';
 export const SHOW_LOADING = 'show_loading';
 export const CLOSE_LOADING = 'close_loading';
 
+export const FETCH_POSTS = 'fetch_posts';
+export const FETCH_POST = 'fetch_post';
+export const CREATE_POST = 'create_post';
+
 /*
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
  */
-const BASE_URL = "https://skillbackend.herokuapp.com/webapi"; //"http://localhost:8080/webapi";
+//const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
+const BASE_URL = "http://localhost:8080/webapi";
 
 
 export function signIn(values, callback) {
@@ -122,4 +127,60 @@ export function fetchProfile() {
             }
         )
     }
+}
+
+export function createPost(values, callback){
+
+
+    const token = localStorage.getItem("user");
+    const uid = token + makeid();
+    const newValue = {...values, retired: false, uid: uid};
+    const request = axios({
+        method: 'post',
+        url: `${BASE_URL}/posts/new`,
+        mode: 'cors',
+        data: newValue,
+        headers: {'Authorization': `Bearer ${token}`}
+    });
+    return (dispatch) => {
+        request.then(
+            () => {
+                dispatch(closeLoading());
+                dispatch(createAlertBar("A Post Created Successfully"));
+                callback();
+            }
+        )
+    }
+}
+
+export function fetchPosts() {
+    console.log("fetchposts is called");
+    const token = localStorage.getItem("user");
+    const request = axios({
+        method: 'get',
+        url: `${BASE_URL}/posts`,
+        mode: 'cors',
+        headers: {'Authorization': `Bearer ${token}`}
+    });
+    return (dispatch) => {
+        request.then(
+            ({data}) => {
+                console.log("returned data");
+                console.log(data);
+                dispatch({type: FETCH_POSTS,payload: data });
+                dispatch(closeLoading());
+
+            }
+        )
+    }
+}
+
+function makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 10; i++)
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
 }

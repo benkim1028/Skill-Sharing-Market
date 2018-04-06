@@ -5,6 +5,7 @@ import userReducer from './reducer_profile';
 import signUpReducer from './reducer_sign_up';
 import alertReducer from './reducer_alert';
 import loadingReducer from './reducer_loading';
+import postsReducer from './reducer_posts';
 
 const rootReducer = combineReducers({
     auth: authReducer,
@@ -12,7 +13,8 @@ const rootReducer = combineReducers({
     user: userReducer,
     signup: signUpReducer,
     alert: alertReducer,
-    loading: loadingReducer
+    loading: loadingReducer,
+    posts: postsReducer
 });
 
 export default rootReducer;

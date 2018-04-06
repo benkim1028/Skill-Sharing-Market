@@ -32,3 +32,6 @@
 .text{
     font-family: Roboto, sans-serif;
 }
+.row{
+    margin: 0px;
+}

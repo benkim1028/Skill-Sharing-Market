@@ -4,10 +4,10 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
-import { signIn, showLoading } from "../actions";
+import { createPost, showLoading } from "../actions";
 import {Paper, RaisedButton, TextField} from "material-ui";
 
-class Login extends Component {
+class PostsNew extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -28,12 +28,15 @@ class Login extends Component {
         // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (
-                <TextField
-                    hintText={field.label}
-                    floatingLabelText={field.label}
-                    errorText={touched && error}
-                    {...field.input}
-                />
+            <TextField
+                hintText={field.label}
+                floatingLabelText={field.label}
+                floatingLabelFixed={true}
+                errorText={touched && error}
+                multiLine={field.multiLines}
+                row={field.multiLines ? 5 : 1}
+                {...field.input}
+            />
         )
     }
 
@@ -41,9 +44,9 @@ class Login extends Component {
     handleSubmit(values) {
         console.log(values);
         this.props.showLoading();
-        this.props.signIn(values, () => {
-            this.props.history.push('/');
-        })
+        this.props.createPost(values, () => {
+             this.props.history.push('/buyNsell');
+         })
 
     };
 
@@ -55,19 +58,21 @@ class Login extends Component {
                 <Header/>
                 <div className="container text-center">
                     <div className="border-bottom">
-                        <h2 className="text">Log in</h2>
+                        <h2 className="text">Buying Skill - Create a Post</h2>
                     </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
                             <Paper>
-                            <form onSubmit={handleSubmit(this.handleSubmit)}>
-                                <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
-                                <Field className="form-control" label="Password" name="password" component={this.renderField}/><br/>
-                                <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
-                                <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
-                                {this.errorMessage()}
-                            </form>
+                                <form onSubmit={handleSubmit(this.handleSubmit)}>
+                                    <Field className="form-control" label="Skill Category" name="skill" component={this.renderField}/><br/>
+                                    <Field className="form-control" label="Title" name="title" component={this.renderField}/><br/>
+                                    <Field className="form-control" label="Duration" name="duration" component={this.renderField}/><br/>
+                                    <Field className="form-control" label="Description" name="description" component={this.renderField} multiLines={true}/><br/>
+                                    <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
+                                    <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
+                                    {this.errorMessage()}
+                                </form>
                             </Paper>
                             <br/>
                         </div>
@@ -88,11 +93,17 @@ function validate(values) {
     const errors = {};
 
     // Validate the inputs from 'values'
-    if (!values.username) {
-        errors.username = "Enter a valid email!";
+    if (!values.skill) {
+        errors.skill = "Enter your skill!";
     }
-    if (!values.password) {
-        errors.password = "Enter a valid password!";
+    if (!values.title) {
+        errors.title = "Enter a title of this post!";
+    }
+    if (!values.duration){
+        errors.duration = "Enter the duration";
+    }
+    if (!values.description){
+        errors.description = "Enter the description";
     }
 
     // If errors is empty, the form is fine to submit
@@ -100,13 +111,9 @@ function validate(values) {
     return errors;
 }
 
-function mapStateToProps(state){
-    return { error: state.auth.error }
-}
-
 export default reduxForm({
     validate: validate,
-    form: 'SignInForm'
+    form: 'PostsNewForm'
 })(
-    connect(mapStateToProps, {signIn, showLoading})(Login)
+    connect(null, {showLoading, createPost})(PostsNew)
 );

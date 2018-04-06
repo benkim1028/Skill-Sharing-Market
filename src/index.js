@@ -25,6 +25,7 @@ import requireAuth from './containers/required_auth';
 import noRequireAuth from './containers/no_require_auth';
 import AlertBar from './containers/alert_bar';
 import Loading from './containers/loading';
+import PostsNew from './containers/posts_new';
 
 
 
@@ -49,6 +50,8 @@ ReactDOM.render(
             <Router history={history}>
                 <div>
                     <Switch>
+                        <Route path="/buyNsell/posts/new" component={PostsNew}/>
+                        <Route path="/buyNsell/posts/:id" component={PostsNew}/>
                         <Route path="/buyNsell" component={BuyAndSellTabs}/>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
