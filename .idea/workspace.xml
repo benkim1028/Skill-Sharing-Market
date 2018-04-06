@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="78b13c97-342e-41da-8846-aa0f633c99cb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/item_lists.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/item_lists.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/reducers/reducer_posts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/reducers/reducer_posts.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -51,11 +49,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/actions/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="384">
-              <caret line="172" column="13" lean-forward="true" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
+            <state relative-caret-position="357">
+              <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -93,7 +91,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="item_lists.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="item_lists.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/item_lists.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="153">
@@ -198,9 +196,9 @@
         <option value="$PROJECT_DIR$/src/containers/posts_new.js" />
         <option value="$PROJECT_DIR$/src/components/buyAndSellTabs.js" />
         <option value="$PROJECT_DIR$/src/reducers/index.js" />
-        <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/containers/item_lists.js" />
         <option value="$PROJECT_DIR$/src/reducers/reducer_posts.js" />
+        <option value="$PROJECT_DIR$/src/actions/index.js" />
       </list>
     </option>
   </component>
@@ -424,12 +422,12 @@
       <workItem from="1520921726824" duration="6498000" />
       <workItem from="1521005075571" duration="10233000" />
       <workItem from="1521322066001" duration="11783000" />
-      <workItem from="1522895891824" duration="27711000" />
+      <workItem from="1522895891824" duration="27964000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="221092000" />
+    <option name="totallyTimeSpent" value="221345000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -444,7 +442,7 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.123958334" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.123958334" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32928178" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24270834" side_tool="true" visible="true" weight="0.23379384" />
@@ -452,7 +450,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3293617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.7572917" visible="true" weight="0.23379384" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7572917" visible="true" weight="0.23379384" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
@@ -809,13 +807,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="384">
-          <caret line="172" column="13" lean-forward="true" selection-start-line="172" selection-start-column="13" selection-end-line="172" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/item_lists.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -823,6 +814,13 @@
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="22" column="56" lean-forward="true" selection-start-line="22" selection-start-column="56" selection-end-line="22" selection-end-column="56" />
         </state>
       </provider>
     </entry>
