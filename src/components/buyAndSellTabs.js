@@ -56,7 +56,7 @@ export default class BuyAndSellTabs extends React.Component {
                     >
                         <Tab label="Buy" value="buy">
                             <div>
-                                <div style={display: 'flex'}>
+                                <div style={{display: 'flex'}}>
                                     <h2 style={styles.headline}>Buy Tab</h2>
                                     <RaisedButton style={styles.button} onClick={() => this.props.history.push('/buyNsell/posts/new')} label="new Post" primary={true} style={{margin: '15px'}} />
                                 </div>
