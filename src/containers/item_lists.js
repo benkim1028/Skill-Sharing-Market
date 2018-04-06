@@ -20,12 +20,12 @@ class ItemList extends Component {
     }
 
     renderPosts() {
-        return _.map(this.props.post, post => {
+        return _.map(this.props.posts, post => {
             return (
-                <TableRow>
-                    <TableRowColumn>skill</TableRowColumn>
-                    <TableRowColumn>title</TableRowColumn>
-                    <TableRowColumn>uid</TableRowColumn>
+                <TableRow key={post.uid}>
+                    <TableRowColumn>{post.skill}</TableRowColumn>
+                    <TableRowColumn>{post.title}</TableRowColumn>
+                    <TableRowColumn>{post.duration}</TableRowColumn>
                 </TableRow>
             )
         })

@@ -167,7 +167,7 @@ export function fetchPosts() {
             ({data}) => {
                 console.log("returned data");
                 console.log(data);
-                dispatch({type: FETCH_POSTS,payload: data });
+                dispatch({type: FETCH_POSTS, payload: data });
                 dispatch(closeLoading());
 
             }
