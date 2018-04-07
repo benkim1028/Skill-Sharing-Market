@@ -54,12 +54,10 @@ class PostsNew extends Component {
         const {handleSubmit} = this.props;
 
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <div className="container text-center">
-                    <div className="border-bottom">
+                <div className="container text-center div-content-fullpage">
                         <h2 className="text">Buying Skill - Create a Post</h2>
-                    </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
@@ -69,7 +67,7 @@ class PostsNew extends Component {
                                     <Field className="form-control" label="Title" name="title" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Duration" name="duration" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Description" name="description" component={this.renderField} multiLines={true}/><br/>
-                                    <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
+                                    <RaisedButton type="submit" label="Create" primary={true} style={{margin: '15px'}} />
                                     <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
                                     {this.errorMessage()}
                                 </form>
@@ -77,9 +75,6 @@ class PostsNew extends Component {
                             <br/>
                         </div>
                         <div className="col"/>
-                    </div>
-                    <div className="border-top">
-                        <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
                     </div>
                 </div>
                 <Footer/>

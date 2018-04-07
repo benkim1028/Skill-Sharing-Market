@@ -2,25 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78b13c97-342e-41da-8846-aa0f633c99cb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/main_page.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/imgs/Music.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/style/imgs/Soccer.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Common/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Common/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buyAndSellTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buyAndSellTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/containers/posts_new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/posts_new.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sign_in.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sign_in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sign_up.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/sign_up.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/Music.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/Soccer.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/background.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/imgs/background.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/css/mui_theme.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/style/mui_theme.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -91,11 +73,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="posts_new.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="posts_new.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/containers/posts_new.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
+            <state relative-caret-position="374">
+              <caret line="73" column="36" lean-forward="true" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
                 <element signature="e#1336#1351#0" expanded="true" />
@@ -116,7 +98,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="buyAndSellTabs.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="buyAndSellTabs.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/components/buyAndSellTabs.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="258">
@@ -232,11 +214,11 @@
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/drawer.js" />
         <option value="$PROJECT_DIR$/src/components/main_page.js" />
-        <option value="$PROJECT_DIR$/src/containers/posts_new.js" />
         <option value="$PROJECT_DIR$/src/containers/sign_up.js" />
         <option value="$PROJECT_DIR$/src/containers/sign_in.js" />
         <option value="$PROJECT_DIR$/src/containers/profile.js" />
         <option value="$PROJECT_DIR$/src/components/buyAndSellTabs.js" />
+        <option value="$PROJECT_DIR$/src/containers/posts_new.js" />
       </list>
     </option>
   </component>
@@ -462,12 +444,12 @@
       <workItem from="1520921726824" duration="6498000" />
       <workItem from="1521005075571" duration="10233000" />
       <workItem from="1521322066001" duration="11783000" />
-      <workItem from="1522895891824" duration="39734000" />
+      <workItem from="1522895891824" duration="40073000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="233115000" />
+    <option name="totallyTimeSpent" value="233454000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -830,17 +812,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/containers/posts_new.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="47" column="52" selection-start-line="47" selection-start-column="52" selection-end-line="47" selection-end-column="52" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-            <element signature="e#1336#1351#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/main_page.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="462">
@@ -857,6 +828,17 @@
           <caret line="61" column="153" selection-start-line="61" selection-start-column="153" selection-end-line="61" selection-end-column="153" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/containers/posts_new.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="73" column="36" lean-forward="true" selection-start-line="73" selection-start-column="36" selection-end-line="73" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+            <element signature="e#1336#1351#0" expanded="true" />
           </folding>
         </state>
       </provider>
