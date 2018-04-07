@@ -10,11 +10,11 @@ import history from './history'
 import {SIGN_IN_SUCCESSFUL} from './actions'
 
 import 'bootstrap/dist/css/bootstrap.css';
-import './css/index.css';
+import './style/css/index.css';
 
 import reducers from './reducers';
 
-import Main from './components/Main'
+import Main_page from './components/main_page'
 import Secret from './components/Secret'
 import Udemy from "./components/Udemy";
 import BuyAndSellTabs from "./components/buyAndSellTabs"
@@ -31,7 +31,7 @@ import PostsNew from './containers/posts_new';
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
-import muiTheme from './css/mui_theme';
+import muiTheme from './style/mui_theme';
 import Profile from "./containers/profile";
 
 
@@ -50,15 +50,15 @@ ReactDOM.render(
             <Router history={history}>
                 <div>
                     <Switch>
-                        <Route path="/buyNsell/posts/new" component={PostsNew}/>
-                        <Route path="/buyNsell/posts/:id" component={PostsNew}/>
-                        <Route path="/buyNsell" component={BuyAndSellTabs}/>
+                        <Route path="/buy&sell/:skill/posts/new" component={PostsNew}/>
+                        <Route path="/buy&sell/:skill/posts/:id" component={PostsNew}/>
+                        <Route path="/buy&sell/:skill" component={BuyAndSellTabs}/>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
                         <Route path="/profile" component={requireAuth(Profile)}/>
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
-                        <Route path="/" component={Main}/>
+                        <Route path="/" component={Main_page}/>
                     </Switch>
                     <AlertBar/>
                     <Loading/>

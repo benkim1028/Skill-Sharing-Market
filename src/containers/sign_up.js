@@ -79,12 +79,10 @@ class SignUp extends Component {
     render() {
         const {handleSubmit} = this.props;
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <div className="container text-center">
-                    <div className="border-bottom">
+                <div className="container text-center div-content-fullpage">
                         <h2 className="text">Sign up</h2>
-                    </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
@@ -116,7 +114,6 @@ class SignUp extends Component {
                         </div>
                         <div className="col"/>
                     </div>
-                    <div className="border-top"/>
                 </div>
                 <Footer/>
             </div>

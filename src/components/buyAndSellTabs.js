@@ -22,7 +22,8 @@ const styles = {
         float: 'left'
     },
     button: {
-        float: 'right'
+        float: 'right',
+        margin: 15 + 'px'
     }
     
     
@@ -47,20 +48,20 @@ export default class BuyAndSellTabs extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <Paper style={styles.paperStyle} zDepth={1}>
+                <Paper className="div-content-fullpage" style={styles.paperStyle} zDepth={1}>
                     <Tabs
                         value={this.state.value}
                         onChange={this.handleChange}
                     >
                         <Tab label="Buy" value="buy">
                             <div>
-                                <div style={{display: 'flex'}}>
+                                <div style={{display: 'flex', justifyContent: "space-between"}}>
                                     <h2 style={styles.headline}>Buy Tab</h2>
-                                    <RaisedButton style={styles.button} onClick={() => this.props.history.push('/buyNsell/posts/new')} label="new Post" primary={true} style={{margin: '15px'}} />
+                                    <RaisedButton style={styles.button} onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.skill}/posts/new`)} label="new Post" primary={true} />
                                 </div>
-                                <ItemList/>
+                                <ItemList skill={this.props.match.params.id}/>
                             </div>
                         </Tab>
                         <Tab label="Sell" value="sell">

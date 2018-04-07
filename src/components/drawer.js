@@ -42,11 +42,11 @@ class DrawerMenu extends React.Component {
                     onRequestChange={(open) => this.setState({open})}
                 >
                     <Subheader>Items</Subheader>
-                    <MenuItem onClick={() => history.push("/buyNsell")}>Sports</MenuItem>
-                    <MenuItem onClick={() => history.push("/buyNsell")}>Music</MenuItem>
-                    <MenuItem onClick={() => history.push("/buyNsell")}>Cooking</MenuItem>
-                    <MenuItem onClick={() => history.push("/buyNsell")}>Science</MenuItem>
-                    <MenuItem onClick={() => history.push("/buyNsell")}>Arts</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/sports")}>Sports</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/music")}>Music</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/cooking")}>Cooking</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/science")}>Science</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/art")}>Art</MenuItem>
                     <Divider />
                     <Subheader>Personal</Subheader>
                     {this.authenticatedMenu()}

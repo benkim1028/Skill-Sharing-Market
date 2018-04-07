@@ -51,16 +51,14 @@ class Login extends Component {
         const {handleSubmit} = this.props;
 
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <div className="container text-center">
-                    <div className="border-bottom">
+                <div className="container text-center div-content-fullpage">
                         <h2 className="text">Log in</h2>
-                    </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
-                            <Paper>
+                            <Paper className="paper-fullpage">
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
                                 <Field className="form-control" label="Password" name="password" component={this.renderField}/><br/>
@@ -73,9 +71,7 @@ class Login extends Component {
                         </div>
                         <div className="col"/>
                     </div>
-                    <div className="border-top">
                         <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
-                    </div>
                 </div>
                 <Footer/>
             </div>

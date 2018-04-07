@@ -45,7 +45,7 @@ class PostsNew extends Component {
         console.log(values);
         this.props.showLoading();
         this.props.createPost(values, () => {
-             this.props.history.push('/buyNsell');
+             this.props.history.push(`/buy&sell/${this.props.match.params.id}`);
          })
 
     };
