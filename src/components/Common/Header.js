@@ -10,7 +10,7 @@ import history from "../../history";
  */
 const Header = () => (
     <AppBar
-        title="SkillFrontEnd"
+        title="WITHUMB"
         onTitleClick={() => history.push('/')}
         iconElementRight={<LoginButton/>}
         iconElementLeft={<DrawerMenu />}
