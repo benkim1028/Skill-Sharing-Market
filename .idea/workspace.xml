@@ -2,21 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="78b13c97-342e-41da-8846-aa0f633c99cb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/containers/pages/posts_new_sell.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/buyAndSellTabs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/buyAndSellTabs.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/drawer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/drawer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/alert_bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/tools/alert_bar.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/item_lists.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/items_list.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/loading.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/tools/loading.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/no_require_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/authentication/no_require_auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/posts_new.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/pages/posts_new_buy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/profile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/pages/profile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/required_auth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/authentication/required_auth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sign_in.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/pages/sign_in.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/containers/sign_up.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/containers/pages/sign_up.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -42,10 +28,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="posts_new_buy.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="posts_new_buy.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/containers/pages/posts_new_buy.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="170">
+            <state relative-caret-position="800">
               <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
               <folding>
                 <element signature="e#0#39#0" expanded="true" />
@@ -66,20 +52,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="reducer_alert.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/reducers/reducer_alert.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="71" selection-start-line="2" selection-start-column="71" selection-end-line="2" selection-end-column="71" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="reducer_loading.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/reducers/reducer_loading.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="75">
               <caret line="5" column="26" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="450">
+              <caret line="31" column="23" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -210,7 +196,6 @@
         <option value="$PROJECT_DIR$/src/containers/posts_new.js" />
         <option value="$PROJECT_DIR$/src/index.js" />
         <option value="$PROJECT_DIR$/src/components/buyAndSellTabs.js" />
-        <option value="$PROJECT_DIR$/src/actions/index.js" />
         <option value="$PROJECT_DIR$/src/containers/items_list.js" />
         <option value="$PROJECT_DIR$/src/components/drawer.js" />
         <option value="$PROJECT_DIR$/src/containers/pages/sign_in.js" />
@@ -221,6 +206,7 @@
         <option value="$PROJECT_DIR$/src/reducers/reducer_profile.js" />
         <option value="$PROJECT_DIR$/src/containers/pages/posts_new_sell.js" />
         <option value="$PROJECT_DIR$/src/containers/pages/posts_new_buy.js" />
+        <option value="$PROJECT_DIR$/src/actions/index.js" />
       </list>
     </option>
   </component>
@@ -444,7 +430,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251435000" />
+    <option name="totallyTimeSpent" value="251685000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -459,7 +445,7 @@
     <frame x="67" y="25" width="1853" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.12844037" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.12844037" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32928178" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.24112734" side_tool="true" weight="0.23447537" />
@@ -468,7 +454,7 @@
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3293617" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.7588726" visible="true" weight="0.24126984" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="8" sideWeight="0.7588726" visible="true" weight="0.24126984" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="TypeScript" order="10" />
@@ -718,13 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="79" column="27" selection-start-line="79" selection-start-column="16" selection-end-line="79" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/login_button.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -837,11 +816,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/containers/pages/posts_new_buy.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
+        <state relative-caret-position="800">
           <caret line="54" column="22" lean-forward="true" selection-start-line="54" selection-start-column="22" selection-end-line="54" selection-end-column="22" />
           <folding>
             <element signature="e#0#39#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="31" column="23" lean-forward="true" selection-start-line="31" selection-start-column="23" selection-end-line="31" selection-end-column="23" />
         </state>
       </provider>
     </entry>
