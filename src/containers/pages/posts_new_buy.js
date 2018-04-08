@@ -96,7 +96,7 @@ class PostsNewBuy extends Component {
                                     <Field className="form-control" label="Duration" name="duration" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Description" name="description" component={this.renderField} multiLines={true}/><br/>
                                     <RaisedButton type="submit" label="Create" primary={true} style={{margin: '15px'}} />
-                                    <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
+                                    <RaisedButton onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.category}`)} label="Cancel" secondary={true} style={{margin: '15px'}} />
                                     {this.errorMessage()}
                                 </form>
                             </Paper>

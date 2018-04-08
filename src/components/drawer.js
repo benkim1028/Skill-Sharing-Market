@@ -1,5 +1,6 @@
 import React from 'react';
 
+import {indigo600} from 'material-ui/styles/colors';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -41,6 +42,7 @@ class DrawerMenu extends React.Component {
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}
                 >
+                    <MenuItem style={{backgroundColor: indigo600, textAlign: "center", color: "white"}} onClick={() => history.push("/")}>WITHUMB</MenuItem>
                     <Subheader>Items</Subheader>
                     <MenuItem onClick={() => {history.push("/buy&sell/sports"); window.location.reload();}}>Sports</MenuItem>
                     <MenuItem onClick={() => {history.push("/buy&sell/music"); window.location.reload();}}>Music</MenuItem>

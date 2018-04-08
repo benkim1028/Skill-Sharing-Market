@@ -15,8 +15,6 @@ import './style/css/index.css';
 import reducers from './reducers';
 
 import Main_page from './components/main_page'
-import Secret from './components/Secret'
-import Udemy from "./components/Udemy";
 import BuyAndSellTabs from "./components/buyAndSellTabs"
 
 import SignIn from './containers/pages/sign_in'
@@ -51,12 +49,10 @@ ReactDOM.render(
             <Router history={history}>
                 <div>
                     <Switch>
-                        <Route path="/buy&sell/:category/posts/new_buy" component={PostsNewBuy}/>
-                        <Route path="/buy&sell/:category/posts/new_sell" component={PostsNewSell}/>
-                        <Route path="/buy&sell/:category/posts/:id" component={PostsNewBuy}/>
-                        <Route path="/buy&sell/:category" component={BuyAndSellTabs}/>
-                        <Route path="/udemy" component={Udemy}/>
-                        <Route path="/secret" component={requireAuth(Secret)}/>
+                        <Route path="/buy&sell/:category/posts/new_buy" component={requireAuth(PostsNewBuy)}/>
+                        <Route path="/buy&sell/:category/posts/new_sell" component={requireAuth(PostsNewSell)}/>
+                        <Route path="/buy&sell/:category/posts/:id" component={(PostsNewBuy)}/>
+                        <Route path="/buy&sell/:category" component={(BuyAndSellTabs)}/>
                         <Route path="/profile" component={requireAuth(Profile)}/>
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>

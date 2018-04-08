@@ -50,6 +50,7 @@ export default class BuyAndSellTabs extends React.Component {
         return (
             <div className="div-fullpage">
                 <Header/>
+                <h1 className="text-center">{this.props.match.params.category}</h1>
                 <Paper className="div-content-fullpage" style={styles.paperStyle} zDepth={1}>
                     <Tabs
                         value={this.state.value}
