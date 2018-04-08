@@ -2,10 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
-import { signIn } from "../actions";
-import {CircularProgress, Paper, RaisedButton, TextField} from "material-ui";
+
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
+import { signIn, showLoading } from "../../actions/index";
+import {Paper, RaisedButton, TextField} from "material-ui";
 import GoogleSignIn from "../components/google_login";
 
 class Login extends Component {
@@ -33,6 +34,7 @@ class Login extends Component {
                     hintText={field.label}
                     floatingLabelText={field.label}
                     errorText={touched && error}
+                    type={field.type ? "password" : "text"}
                     {...field.input}
                 />
         )
@@ -41,6 +43,7 @@ class Login extends Component {
 
     handleSubmit(values) {
         console.log(values);
+        this.props.showLoading();
         this.props.signIn(values, () => {
             this.props.history.push('/');
         })
@@ -51,19 +54,17 @@ class Login extends Component {
         const {handleSubmit} = this.props;
 
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <div className="container text-center">
-                    <div className="border-bottom">
+                <div className="container text-center div-content-fullpage">
                         <h2 className="text">Log in</h2>
-                    </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
-                            <Paper>
+                            <Paper className="paper-fullpage">
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
-                                <Field className="form-control" label="Password" name="password" component={this.renderField}/><br/>
+                                <Field className="form-control" label="Password" name="password" type="password" component={this.renderField}/><br/>
                                 <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
                                 <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
                                 {this.errorMessage()}
@@ -74,9 +75,7 @@ class Login extends Component {
                         </div>
                         <div className="col"/>
                     </div>
-                    <div className="border-top">
                         <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
-                    </div>
                 </div>
                 <Footer/>
             </div>
@@ -107,7 +106,7 @@ function mapStateToProps(state){
 
 export default reduxForm({
     validate: validate,
-    form: 'PostsNewForm'
+    form: 'SignInForm'
 })(
-    connect(mapStateToProps, {signIn})(Login)
+    connect(mapStateToProps, {signIn, showLoading})(Login)
 );

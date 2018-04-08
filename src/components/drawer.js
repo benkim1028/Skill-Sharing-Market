@@ -1,12 +1,17 @@
 import React from 'react';
+
+import {indigo600} from 'material-ui/styles/colors';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
+import Subheader from 'material-ui/Subheader';
 import {Divider, FontIcon, IconButton} from "material-ui";
 import {fullWhite} from 'material-ui/styles/colors';
-import history from '../history'
 
-export default class DrawerMenu extends React.Component {
+import history from '../history'
+import {connect} from "react-redux";
+
+class DrawerMenu extends React.Component {
 
     constructor(props) {
         super(props);
@@ -16,6 +21,14 @@ export default class DrawerMenu extends React.Component {
     handleToggle = () => this.setState({open: !this.state.open});
 
     handleClose = () => this.setState({open: false});
+
+    authenticatedMenu() {
+        if (this.props.authenticated) {
+            return (
+                <MenuItem onClick={() => history.push("/profile")}>Profile</MenuItem>
+            )
+        }
+    }
 
     render() {
         return (
@@ -29,16 +42,25 @@ export default class DrawerMenu extends React.Component {
                     open={this.state.open}
                     onRequestChange={(open) => this.setState({open})}
                 >
-                    <MenuItem onClick={this.handleClose}>Sports</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Music</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Cooking</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Science</MenuItem>
-                    <MenuItem onClick={this.handleClose}>Arts</MenuItem>
+                    <MenuItem style={{backgroundColor: indigo600, textAlign: "center", color: "white"}} onClick={() => history.push("/")}>WITHUMB</MenuItem>
+                    <Subheader>Items</Subheader>
+                    <MenuItem onClick={() => {history.push("/buy&sell/sports"); window.location.reload();}}>Sports</MenuItem>
+                    <MenuItem onClick={() => {history.push("/buy&sell/music"); window.location.reload();}}>Music</MenuItem>
+                    <MenuItem onClick={() => {history.push("/buy&sell/cooking"); window.location.reload();}}>Cooking</MenuItem>
+                    <MenuItem onClick={() => {history.push("/buy&sell/science"); window.location.reload();}}>Science</MenuItem>
+                    <MenuItem onClick={() => {history.push("/buy&sell/art"); window.location.reload();}}>Art</MenuItem>
                     <Divider />
-                    <MenuItem onClick={() => history.push("/profile")}>Profile</MenuItem>
+                    <Subheader>Personal</Subheader>
+                    {this.authenticatedMenu()}
                     <MenuItem onClick={this.handleClose}>Setting</MenuItem>
                 </Drawer>
             </div>
         );
     }
 }
+
+function mapStateToProps(state) {
+    return { authenticated: state.auth.authenticated };
+}
+
+export default connect(mapStateToProps)(DrawerMenu);

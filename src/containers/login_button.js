@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {signOut} from "../actions";
+import {signOut, createAlertBar} from "../actions";
 import history from "../history";
 
 class loginButton extends Component {
@@ -14,7 +14,8 @@ class loginButton extends Component {
     onClickSignOut(){
         this.props.signOut( () => {
             history.push('/');
-        })
+        });
+        this.props.createAlertBar("Signed Out Successfully");
     }
 
     loginOrLogout() {
@@ -45,4 +46,4 @@ function mapStateToProps(state) {
     return {authenticated: state.auth.authenticated};
 }
 
-export default connect(mapStateToProps, {signOut})(loginButton);
+export default connect(mapStateToProps, {signOut, createAlertBar})(loginButton);

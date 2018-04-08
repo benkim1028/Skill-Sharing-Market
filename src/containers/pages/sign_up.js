@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
-import {signUp} from "../actions";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
+import {signUp, showLoading} from "../../actions/index";
 import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
-import normalizePhone from "../components/Tools/normalizePhone";
+import normalizePhone from "../../components/Tools/normalizePhone";
 
 class SignUp extends Component {
 
@@ -17,6 +17,7 @@ class SignUp extends Component {
 
     handleSubmit(values) {
         console.log(values);
+        this.props.showLoading();
         this.props.signUp(values, () => {
             this.props.history.push('/signin');
         })
@@ -40,6 +41,7 @@ class SignUp extends Component {
                 hintText={field.label}
                 floatingLabelText={field.label}
                 errorText={touched && error}
+                type={field.type ? "password" : "text"}
                 {...field.input}
             />
         )
@@ -78,12 +80,10 @@ class SignUp extends Component {
     render() {
         const {handleSubmit} = this.props;
         return (
-            <div>
+            <div className="div-fullpage">
                 <Header/>
-                <div className="container text-center">
-                    <div className="border-bottom">
+                <div className="container text-center div-content-fullpage">
                         <h2 className="text">Sign up</h2>
-                    </div>
                     <div className="row align-items-center">
                         <div className="col"/>
                         <div className="col text-center align-content-center">
@@ -91,9 +91,9 @@ class SignUp extends Component {
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field label="Choose your username" name="username"
                                        component={this.renderField}/><br/>
-                                <Field label="Create a password" name="password"
+                                <Field label="Create a password" name="password" type="password"
                                        component={this.renderField}/><br/>
-                                <Field label="Confirm your password" name="password2"
+                                <Field label="Confirm your password" name="password2" type="password"
                                        component={this.renderField}/><br/>
                                 <Field label="First name" name="firstname"
                                        component={this.renderField}/><br/>
@@ -115,7 +115,6 @@ class SignUp extends Component {
                         </div>
                         <div className="col"/>
                     </div>
-                    <div className="border-top"/>
                 </div>
                 <Footer/>
             </div>
@@ -166,7 +165,7 @@ function mapStateToProps(state){
 
 export default reduxForm({
     validate: validate,
-    form: 'PostsNewForm'
+    form: 'SignUpForm'
 })(
-    connect(mapStateToProps, {signUp})(SignUp)
+    connect(mapStateToProps, {signUp, showLoading})(SignUp)
 );
