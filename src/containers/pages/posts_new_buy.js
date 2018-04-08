@@ -2,12 +2,19 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
-import { createPost, showLoading } from "../actions";
-import {Paper, RaisedButton, TextField} from "material-ui";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
+import { createPost, showLoading } from "../../actions/index";
+import {AutoComplete, Paper, RaisedButton, TextField} from "material-ui";
 
-class PostsNew extends Component {
+
+const dataSource = {sports: ["Soccer", "archery", "badminton", "baseball", "softball", "beach volleyball", "boxing", "canoe / kayak", "climbing", "cycling", "fencing"],
+    music: ["guitar", "piano", "ukulele", "violin", "saxophone","cello","trumpet","acoustic guitar","electric guitar","accordion","flute","drum","oboe","clarinet","base guitar","xylophone","mandolin","viola","tuba","trombone","harp","cajon","organ"],
+    art: [],
+    science: [],
+    cooking: []} ;
+
+class PostsNewBuy extends Component {
     constructor(props) {
         super(props);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -29,12 +36,32 @@ class PostsNew extends Component {
 
         return (
             <TextField
+                style={{textAlign: 'left'}}
                 hintText={field.label}
                 floatingLabelText={field.label}
                 floatingLabelFixed={true}
                 errorText={touched && error}
                 multiLine={field.multiLines}
-                row={field.multiLines ? 5 : 1}
+                rows={field.multiLines ? 5 : 1}
+                {...field.input}
+            />
+        )
+    }
+    renderAutoComplete(field){
+        const {meta: {touched, error}} = field;
+        // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+
+        return (
+            <AutoComplete
+                style={{textAlign: 'left'}}
+                dataSource={dataSource[field.category]}
+                hintText={field.label}
+                maxSearchResults={6}
+                floatingLabelText={field.label}
+                floatingLabelFixed={true}
+                errorText={touched && error}
+                multiLine={field.multiLine}
+                rows={field.multiLine ? 5 : 1}
                 {...field.input}
             />
         )
@@ -44,8 +71,8 @@ class PostsNew extends Component {
     handleSubmit(values) {
         console.log(values);
         this.props.showLoading();
-        this.props.createPost(values, () => {
-             this.props.history.push(`/buy&sell/${this.props.match.params.id}`);
+        this.props.createPost(values, this.props.match.params.category, "buy", () => {
+             this.props.history.push(`/buy&sell/${this.props.match.params.category}`);
          })
 
     };
@@ -63,7 +90,8 @@ class PostsNew extends Component {
                         <div className="col text-center align-content-center">
                             <Paper>
                                 <form onSubmit={handleSubmit(this.handleSubmit)}>
-                                    <Field className="form-control" label="Skill Category" name="skill" component={this.renderField}/><br/>
+                                    <Field className="form-control" label="Skill Category" name="category" component={this.renderField}/><br/>
+                                    <Field name="subCategory" component={this.renderAutoComplete} label="Sub Category" category={this.props.match.params.category}/><br/>
                                     <Field className="form-control" label="Title" name="title" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Duration" name="duration" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Description" name="description" component={this.renderField} multiLines={true}/><br/>
@@ -84,12 +112,16 @@ class PostsNew extends Component {
 }
 
 function validate(values) {
+
     // console.log(values) -> {title:"asdf", categories: "asdf", content: "asdf"}
     const errors = {};
 
     // Validate the inputs from 'values'
-    if (!values.skill) {
-        errors.skill = "Enter your skill!";
+    if (!values.category) {
+        errors.category = "choose one category!";
+    }
+    if (!values.subCategory) {
+        errors.subCategory = "choose one sub-category!";
     }
     if (!values.title) {
         errors.title = "Enter a title of this post!";
@@ -110,5 +142,5 @@ export default reduxForm({
     validate: validate,
     form: 'PostsNewForm'
 })(
-    connect(null, {showLoading, createPost})(PostsNew)
+    connect(null, {showLoading, createPost})(PostsNewBuy)
 );

@@ -19,20 +19,21 @@ import Secret from './components/Secret'
 import Udemy from "./components/Udemy";
 import BuyAndSellTabs from "./components/buyAndSellTabs"
 
-import SignIn from './containers/sign_in'
-import SignUp from './containers/sign_up'
-import requireAuth from './containers/required_auth';
-import noRequireAuth from './containers/no_require_auth';
-import AlertBar from './containers/alert_bar';
-import Loading from './containers/loading';
-import PostsNew from './containers/posts_new';
+import SignIn from './containers/pages/sign_in'
+import SignUp from './containers/pages/sign_up'
+import requireAuth from './containers/authentication/required_auth';
+import noRequireAuth from './containers/authentication/no_require_auth';
+import AlertBar from './containers/tools/alert_bar';
+import Loading from './containers/tools/loading';
+import PostsNewBuy from './containers/pages/posts_new_buy';
+import PostsNewSell from './containers/pages/posts_new_sell';
 
 
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import muiTheme from './style/mui_theme';
-import Profile from "./containers/profile";
+import Profile from "./containers/pages/profile";
 
 
 const createStoreWithMiddleware = applyMiddleware(promise, reduxThunk)(createStore);
@@ -50,9 +51,10 @@ ReactDOM.render(
             <Router history={history}>
                 <div>
                     <Switch>
-                        <Route path="/buy&sell/:skill/posts/new" component={PostsNew}/>
-                        <Route path="/buy&sell/:skill/posts/:id" component={PostsNew}/>
-                        <Route path="/buy&sell/:skill" component={BuyAndSellTabs}/>
+                        <Route path="/buy&sell/:category/posts/new_buy" component={PostsNewBuy}/>
+                        <Route path="/buy&sell/:category/posts/new_sell" component={PostsNewSell}/>
+                        <Route path="/buy&sell/:category/posts/:id" component={PostsNewBuy}/>
+                        <Route path="/buy&sell/:category" component={BuyAndSellTabs}/>
                         <Route path="/udemy" component={Udemy}/>
                         <Route path="/secret" component={requireAuth(Secret)}/>
                         <Route path="/profile" component={requireAuth(Profile)}/>

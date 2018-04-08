@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
 import {Divider, List, ListItem, Paper} from "material-ui";
 import {connect} from "react-redux";
-import {fetchProfile, showLoading} from "../actions";
+import {fetchProfile, showLoading} from "../../actions/index";
 
 class Profile extends Component {
 

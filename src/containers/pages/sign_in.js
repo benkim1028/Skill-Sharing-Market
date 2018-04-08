@@ -2,9 +2,9 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
-import { signIn, showLoading } from "../actions";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
+import { signIn, showLoading } from "../../actions/index";
 import {Paper, RaisedButton, TextField} from "material-ui";
 
 class Login extends Component {
@@ -32,6 +32,7 @@ class Login extends Component {
                     hintText={field.label}
                     floatingLabelText={field.label}
                     errorText={touched && error}
+                    type={field.type ? "password" : "text"}
                     {...field.input}
                 />
         )
@@ -61,7 +62,7 @@ class Login extends Component {
                             <Paper className="paper-fullpage">
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
-                                <Field className="form-control" label="Password" name="password" component={this.renderField}/><br/>
+                                <Field className="form-control" label="Password" name="password" type="password" component={this.renderField}/><br/>
                                 <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
                                 <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
                                 {this.errorMessage()}

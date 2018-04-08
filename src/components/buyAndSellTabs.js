@@ -3,7 +3,7 @@ import {Tabs, Tab} from 'material-ui/Tabs';
 import Header from "./Common/Header";
 import Footer from "./Common/Footer";
 import {Paper, RaisedButton} from "material-ui";
-import ItemList from "../containers/item_lists";
+import ItemList from "../containers/items_list";
 
 
 const styles = {
@@ -25,9 +25,9 @@ const styles = {
         float: 'right',
         margin: 15 + 'px'
     }
-    
-    
-    
+
+
+
 };
 
 export default class BuyAndSellTabs extends React.Component {
@@ -59,18 +59,18 @@ export default class BuyAndSellTabs extends React.Component {
                             <div>
                                 <div style={{display: 'flex', justifyContent: "space-between"}}>
                                     <h2 style={styles.headline}>Buy Tab</h2>
-                                    <RaisedButton style={styles.button} onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.skill}/posts/new`)} label="new Post" primary={true} />
+                                    <RaisedButton style={styles.button} onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.category}/posts/new_buy`)} label="new Post" primary={true} />
                                 </div>
-                                <ItemList skill={this.props.match.params.id}/>
+                                {this.state.value === "buy"? <ItemList category={this.props.match.params.category} transaction="buy" /> : null}
                             </div>
                         </Tab>
                         <Tab label="Sell" value="sell">
                             <div>
-                                <h2 style={styles.headline}>Sell Tab</h2>
-                                <p>
-                                    This tab will be used for selling.
-                                </p>
-                                <ItemList/>
+                                <div style={{display: 'flex', justifyContent: "space-between"}}>
+                                    <h2 style={styles.headline}>Sell Tab</h2>
+                                    <RaisedButton style={styles.button} onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.category}/posts/new_sell`)} label="new Post" primary={true} />
+                                </div>
+                                {this.state.value === "sell"? <ItemList category={this.props.match.params.category} transaction="sell" /> : null}
                             </div>
                         </Tab>
                     </Tabs>

@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/Header";
-import Footer from "../components/Common/Footer";
-import {signUp, showLoading} from "../actions";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
+import {signUp, showLoading} from "../../actions/index";
 import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
-import normalizePhone from "../components/Tools/normalizePhone";
+import normalizePhone from "../../components/Tools/normalizePhone";
 
 class SignUp extends Component {
 
@@ -41,6 +41,7 @@ class SignUp extends Component {
                 hintText={field.label}
                 floatingLabelText={field.label}
                 errorText={touched && error}
+                type={field.type ? "password" : "text"}
                 {...field.input}
             />
         )
@@ -90,9 +91,9 @@ class SignUp extends Component {
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field label="Choose your username" name="username"
                                        component={this.renderField}/><br/>
-                                <Field label="Create a password" name="password"
+                                <Field label="Create a password" name="password" type="password"
                                        component={this.renderField}/><br/>
-                                <Field label="Confirm your password" name="password2"
+                                <Field label="Confirm your password" name="password2" type="password"
                                        component={this.renderField}/><br/>
                                 <Field label="First name" name="firstname"
                                        component={this.renderField}/><br/>

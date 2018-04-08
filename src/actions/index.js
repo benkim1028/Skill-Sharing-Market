@@ -23,8 +23,8 @@ export const CREATE_POST = 'create_post';
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
  */
-const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
-//const BASE_URL = "http://localhost:8080/webapi";
+//const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
+const BASE_URL = "http://localhost:8080/webapi";
 
 
 export function signIn(values, callback) {
@@ -38,13 +38,18 @@ export function signIn(values, callback) {
     return (dispatch) => {
         request.then(
             ({data}) => {
+                let token = jwt.decode(data.token);
                 localStorage.setItem("user", data.token);
+                localStorage.setItem("userid", token.jti);
                 dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
                 dispatch(closeLoading());
                 dispatch(createAlertBar("Signed In Successfully"));
-                let token = jwt.decode(data.token);
+
                 console.log(token);
-                console.log(new Date(token.exp));
+                var d = new Date();
+                console.log(d);
+                d.setMilliseconds(d.getMilliseconds() + token.exp);
+                console.log(d);
                 callback();
             }).catch(
             () => {
@@ -129,15 +134,16 @@ export function fetchProfile() {
     }
 }
 
-export function createPost(values, callback){
+export function createPost(values, category, transaction, callback){
 
 
+    const id = localStorage.getItem("userid");
     const token = localStorage.getItem("user");
-    const uid = token + makeid();
-    const newValue = {...values, retired: false, uid: uid};
+    const uid = id + makeid();
+    const newValue = {...values, retired: false, uid: uid, createdAt: new Date()};
     const request = axios({
         method: 'post',
-        url: `${BASE_URL}/posts/new`,
+        url: `${BASE_URL}/posts/${category}/new${transaction}post`,
         mode: 'cors',
         data: newValue,
         headers: {'Authorization': `Bearer ${token}`}
@@ -153,12 +159,12 @@ export function createPost(values, callback){
     }
 }
 
-export function fetchPosts() {
+export function fetchPosts(category, transaction) {
     console.log("fetchposts is called");
     const token = localStorage.getItem("user");
     const request = axios({
         method: 'get',
-        url: `${BASE_URL}/posts`,
+        url: `${BASE_URL}/posts/${category}/get${transaction}posts`,
         mode: 'cors',
         headers: {'Authorization': `Bearer ${token}`}
     });
@@ -179,7 +185,7 @@ function makeid() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-    for (var i = 0; i < 10; i++)
+    for (var i = 0; i < 40; i++)
         text += possible.charAt(Math.floor(Math.random() * possible.length));
 
     return text;
