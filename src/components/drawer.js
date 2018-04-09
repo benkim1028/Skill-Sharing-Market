@@ -44,11 +44,11 @@ class DrawerMenu extends React.Component {
                 >
                     <MenuItem style={{backgroundColor: indigo600, textAlign: "center", color: "white"}} onClick={() => history.push("/")}>WITHUMB</MenuItem>
                     <Subheader>Items</Subheader>
-                    <MenuItem onClick={() => {history.push("/buy&sell/sports"); window.location.reload();}}>Sports</MenuItem>
-                    <MenuItem onClick={() => {history.push("/buy&sell/music"); window.location.reload();}}>Music</MenuItem>
-                    <MenuItem onClick={() => {history.push("/buy&sell/cooking"); window.location.reload();}}>Cooking</MenuItem>
-                    <MenuItem onClick={() => {history.push("/buy&sell/science"); window.location.reload();}}>Science</MenuItem>
-                    <MenuItem onClick={() => {history.push("/buy&sell/art"); window.location.reload();}}>Art</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/sports")}>Sports</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/music")}>Music</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/cooking")}>Cooking</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/science")}>Science</MenuItem>
+                    <MenuItem onClick={() => history.push("/buy&sell/art")}>Art</MenuItem>
                     <Divider />
                     <Subheader>Personal</Subheader>
                     {this.authenticatedMenu()}
