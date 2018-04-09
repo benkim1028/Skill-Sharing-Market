@@ -7,7 +7,7 @@ import Header from "../../components/Common/Header";
 import Footer from "../../components/Common/Footer";
 import { signIn, showLoading } from "../../actions/index";
 import {Paper, RaisedButton, TextField} from "material-ui";
-import GoogleSignIn from "../components/google_login";
+import GoogleSignIn from "../../components/google_login";
 
 class Login extends Component {
     constructor(props) {
