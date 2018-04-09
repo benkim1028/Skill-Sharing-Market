@@ -52,7 +52,7 @@ ReactDOM.render(
                         <Route path="/buy&sell/:category/posts/new_buy" component={requireAuth(PostsNewBuy)}/>
                         <Route path="/buy&sell/:category/posts/new_sell" component={requireAuth(PostsNewSell)}/>
                         <Route path="/buy&sell/:category/posts/:id" component={(PostsNewBuy)}/>
-                        <Route path="/buy&sell/:category" component={(BuyAndSellTabs)}/>
+                        <Route path="/buy&sell/:category" render={(props) => (<BuyAndSellTabs key={props.match.params.category} {...props}/>)}/>
                         <Route path="/profile" component={requireAuth(Profile)}/>
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
