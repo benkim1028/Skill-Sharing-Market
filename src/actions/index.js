@@ -23,8 +23,8 @@ export const CREATE_POST = 'create_post';
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
  */
-const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
-// const BASE_URL = "http://localhost:8080/webapi";
+//const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
+ const BASE_URL = "http://localhost:8080/webapi";
 
 
 export function signIn(values, callback) {
@@ -38,19 +38,26 @@ export function signIn(values, callback) {
     return (dispatch) => {
         request.then(
             ({data}) => {
-                let token = jwt.decode(data.token);
-                localStorage.setItem("user", data.token);
-                localStorage.setItem("userid", token.jti);
-                dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
-                dispatch(closeLoading());
-                dispatch(createAlertBar("Signed In Successfully"));
+                console.log(data);
+                if(data.message === "Need More Information"){
 
-                console.log(token);
-                var d = new Date();
-                console.log(d);
-                d.setMilliseconds(d.getMilliseconds() + token.exp);
-                console.log(d);
-                callback();
+                    dispatch(closeLoading());
+                }
+                else if(data.message === "Login Successful") {
+                    let token = jwt.decode(data.token);
+                    localStorage.setItem("user", data.token);
+                    localStorage.setItem("userid", token.jti);
+                    dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
+                    dispatch(closeLoading());
+                    dispatch(createAlertBar("Signed In Successfully"));
+
+                    console.log(token);
+                    var d = new Date();
+                    console.log(d);
+                    d.setMilliseconds(d.getMilliseconds() + token.exp);
+                    console.log(d);
+                    callback();
+                }
             }).catch(
             () => {
                 dispatch({type: SIGN_IN_FAILED, payload: "Wrong Username or Password"});

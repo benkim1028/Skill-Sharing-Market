@@ -7,7 +7,7 @@ import Header from "../../components/Common/Header";
 import Footer from "../../components/Common/Footer";
 import { signIn, showLoading } from "../../actions/index";
 import {Paper, RaisedButton, TextField} from "material-ui";
-import GoogleSignIn from "../../components/google_login";
+import GoogleSignIn from "../google_login";
 
 class Login extends Component {
     constructor(props) {
@@ -42,6 +42,8 @@ class Login extends Component {
 
 
     handleSubmit(values) {
+        values.idp = "default";
+        values.idToken = null;
         console.log(values);
         this.props.showLoading();
         this.props.signIn(values, () => {
