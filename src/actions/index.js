@@ -42,7 +42,8 @@ export function signIn(values, callback) {
                 console.log(data);
                 if(data.message === "Need More Information"){
                     dispatch(closeLoading());
-                    history.push("/signin/google")
+                    history.push({pathname: '/signin/google',
+                                 state: { username: data.username, firstname: data.firstname, lastname: data.lastname }})
                 }
                 else if(data.message === "Login Successful") {
                     let token = jwt.decode(data.token);
