@@ -97,24 +97,43 @@ export function closeLoading() {
     }
 }
 
-export function signUp(values, callback) {
-
+export function signUp(values, callback, idp="default") {
+    var sign_up_url = `${BASE_URL}/signup`;
+    if(idp != "default"){
+        url += `/${idp}`
+    }
     const request = axios({
         method: 'post',
-        url: `${BASE_URL}/signup`,
+        url: sign_up_url,
         data: values,
         mode: 'cors'
     });
     return (dispatch) => {
         request.then(
-            () => {
-                dispatch({type: SIGN_UP_SUCCESSFUL});
-                dispatch(closeLoading());
-                dispatch(createAlertBar("Signed Up Successfully"));
-                callback();
+            (data) => {
+                if(data.message === "Login Successful") {
+                    let token = jwt.decode(data.token);
+                    localStorage.setItem("user", data.token);
+                    localStorage.setItem("userid", token.jti);
+                    dispatch({type: SIGN_IN_SUCCESSFUL, payload: data});
+                    dispatch(closeLoading());
+                    dispatch(createAlertBar("Signed In Successfully"));
+
+                    console.log(token);
+                    var d = new Date();
+                    console.log(d);
+                    d.setMilliseconds(d.getMilliseconds() + token.exp);
+                    console.log(d);
+                    callback();
+                } else {
+                    dispatch({type: SIGN_UP_SUCCESSFUL});
+                    dispatch(closeLoading());
+                    dispatch(createAlertBar("Signed Up Successfully"));
+                    callback();
+                }
             }).catch(
             () => {
-                dispatch({type: SIGN_UP_FAILED, payload: "Wrong Username or Password"});
+                dispatch({type: SIGN_UP_FAILED, payload: "User Exists in our database"});
                 dispatch(closeLoading());
                 dispatch(createAlertBar("Sign Up Failed"));
             }
