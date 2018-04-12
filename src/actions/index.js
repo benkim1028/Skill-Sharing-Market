@@ -100,7 +100,7 @@ export function closeLoading() {
 export function signUp(values, callback, idp="default") {
     var sign_up_url = `${BASE_URL}/signup`;
     if(idp != "default"){
-        url += `/${idp}`
+        sign_up_url += `/${idp}`
     }
     const request = axios({
         method: 'post',
