@@ -16,11 +16,14 @@ class GoogleSignUp extends Component {
     }
 
     handleSubmit(values) {
+        values["username"] = this.props.location.state.username;
+        values["firstname"] = this.props.location.state.firstname;
+        values["lastname"] = this.props.location.state.lastname;
         console.log(values);
         this.props.showLoading();
         this.props.signUp(values, () => {
-            this.props.history.push('/signin');
-        })
+            this.props.history.push('/');
+        }, "google")
     }
 
     errorMessage(){
@@ -107,12 +110,6 @@ class GoogleSignUp extends Component {
                                       floatingLabelFixed={true}
                                       disabled={true}
                                 />
-                                <Field label="Choose your username" name="username"
-                                       component={this.renderField}/><br/>
-                                <Field label="First name" name="firstname"
-                                       component={this.renderField}/><br/>
-                                <Field label="Last name" name="lastname"
-                                       component={this.renderField}/><br/>
                                 <Field label="Create a password" name="password" type="password"
                                        component={this.renderField}/><br/>
                                 <Field label="Confirm your password" name="password2" type="password"
