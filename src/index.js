@@ -54,9 +54,9 @@ ReactDOM.render(
                         <Route path="/buy&sell/:category/posts/new_sell" component={requireAuth(PostsNewSell)}/>
                         <Route path="/buy&sell/:category/posts/:id" component={PostsNewBuy}/>
                         <Route path="/buy&sell/:category" render={(props) => (<BuyAndSellTabs key={props.match.params.category} {...props}/>)}/>
+                        <Route path="/signup/google" component={GoogleSignUp}/>   
                         <Route path="/profile" component={requireAuth(Profile)}/>                       
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
-                        <Route path="/signup/google" component={GoogleSignUp}/>   
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
                         <Route path="/" component={Main_page}/>
                     </Switch>
