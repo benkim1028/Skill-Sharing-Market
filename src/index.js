@@ -19,6 +19,7 @@ import BuyAndSellTabs from "./components/buyAndSellTabs"
 
 import SignIn from './containers/pages/sign_in'
 import SignUp from './containers/pages/sign_up'
+import GoogleSignUp from './containers/pages/google_sign_up'
 import requireAuth from './containers/authentication/required_auth';
 import noRequireAuth from './containers/authentication/no_require_auth';
 import AlertBar from './containers/tools/alert_bar';
@@ -51,10 +52,11 @@ ReactDOM.render(
                     <Switch>
                         <Route path="/buy&sell/:category/posts/new_buy" component={requireAuth(PostsNewBuy)}/>
                         <Route path="/buy&sell/:category/posts/new_sell" component={requireAuth(PostsNewSell)}/>
-                        <Route path="/buy&sell/:category/posts/:id" component={(PostsNewBuy)}/>
+                        <Route path="/buy&sell/:category/posts/:id" component={PostsNewBuy}/>
                         <Route path="/buy&sell/:category" render={(props) => (<BuyAndSellTabs key={props.match.params.category} {...props}/>)}/>
-                        <Route path="/profile" component={requireAuth(Profile)}/>
+                        <Route path="/profile" component={requireAuth(Profile)}/>                       
                         <Route path="/signin" component={noRequireAuth(SignIn)}/>
+                        <Route path="/signup/google" component={GoogleSignUp}/>   
                         <Route path="/signup" component={noRequireAuth(SignUp)}/>
                         <Route path="/" component={Main_page}/>
                     </Switch>
