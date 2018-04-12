@@ -1,5 +1,6 @@
 import axios from 'axios';
 import jwt from 'jsonwebtoken';
+import history from '../history'
 
 export const SIGN_IN_SUCCESSFUL = 'sign_in_successful';
 export const SIGN_IN_FAILED = 'sign_in_failed';
@@ -40,8 +41,8 @@ export function signIn(values, callback) {
             ({data}) => {
                 console.log(data);
                 if(data.message === "Need More Information"){
-
                     dispatch(closeLoading());
+                    history.push("/signin/google")
                 }
                 else if(data.message === "Login Successful") {
                     let token = jwt.decode(data.token);
