@@ -97,19 +97,19 @@ class GoogleSignUp extends Component {
                                       floatingLabelText="Username"
                                       floatingLabelFixed={true}
                                       disabled={true}
-                                />
+                                /><br/>
                                 <TextField
                                       defaultValue={this.props.location.state.lastname}
                                       floatingLabelText="Last Name"
                                       floatingLabelFixed={true}
                                       disabled={true}
-                                />
+                                /><br/>
                                 <TextField
                                       defaultValue={this.props.location.state.firstname}
                                       floatingLabelText="First Name"
                                       floatingLabelFixed={true}
                                       disabled={true}
-                                />
+                                /><br/>
                                 <Field label="Create a password" name="password" type="password"
                                        component={this.renderField}/><br/>
                                 <Field label="Confirm your password" name="password2" type="password"
