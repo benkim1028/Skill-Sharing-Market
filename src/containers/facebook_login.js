@@ -41,4 +41,4 @@ class FacebookSignIn extends React.Component {
     }
 }
 
-export default connect(null, {signIn, showLoading})(GoogleSignIn);
+export default connect(null, {signIn, showLoading})(FacebookSignIn);
