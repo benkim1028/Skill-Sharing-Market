@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FacebookLogin from 'react-facebook-login';
-import {signUp, showLoading} from "../actions/index";
+import {signIn, showLoading} from "../actions/index";
 import {RaisedButton} from "material-ui";
 import history from "../history";
 import {connect} from 'react-redux';
