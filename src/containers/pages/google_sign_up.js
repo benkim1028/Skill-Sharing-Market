@@ -38,7 +38,6 @@ class GoogleSignUp extends Component {
 
     renderField(field) {
         const {meta: {touched, error}} = field;
-
         return (
             <TextField
                 hintText={field.label}
@@ -66,7 +65,6 @@ class GoogleSignUp extends Component {
     }
 
     renderRadioGroup({input, ...rest}) {
-        console.log(rest)
         return (
             <div>
             <RadioButtonGroup
@@ -138,7 +136,6 @@ class GoogleSignUp extends Component {
 }
 
 function validate(values) {
-    console.log(values);// -> {title:"asdf", categories: "asdf", content: "asdf"}
     const errors = {};
 
     // Validate the inputs from 'values'

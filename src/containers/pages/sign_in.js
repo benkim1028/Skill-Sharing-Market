@@ -8,6 +8,7 @@ import Footer from "../../components/Common/Footer";
 import { signIn, showLoading } from "../../actions/index";
 import {Paper, RaisedButton, TextField} from "material-ui";
 import GoogleSignIn from "../google_login";
+import FacebookSignIn from "../facebook_login";
 
 class Login extends Component {
     constructor(props) {
@@ -72,8 +73,8 @@ class Login extends Component {
                                 {this.errorMessage()}
                             </form>
                             </Paper>
-                            <GoogleSignIn/>
-                            <br/>
+                            <GoogleSignIn/><br/>
+                            <FacebookSignIn/><br/>
                         </div>
                         <div className="col"/>
                     </div>
