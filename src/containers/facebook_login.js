@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FacebookLogin from 'react-facebook-login';
+import {RaisedButton} from "material-ui";
 import history from "../history";
 
 class FacebookSignIn extends React.Component {
@@ -14,7 +15,7 @@ class FacebookSignIn extends React.Component {
         var value = {
             username: null,
             password: null,
-            idp: "google",
+            idp: "facebook",
             idToken: response.tokenId
         };
         this.props.signIn(value, () => history.push('/'));
@@ -29,9 +30,13 @@ class FacebookSignIn extends React.Component {
                 autoLoad={true}
                 fields="name,email,picture"
                 callback={this.responseFacebook}
+                icon="fa-facebook"
+                render={props => (
+                    <RaisedButton {...props}>Login With Facebook</RaisedButton>
+                )}
             />
         )
     }
 }
 
-export default FacebookSignIn;
+export default connect(null, {signIn, showLoading})(GoogleSignIn);
