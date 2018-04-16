@@ -1,7 +1,7 @@
 import {SIGN_IN_FAILED, SIGN_IN_SUCCESSFUL, SIGN_OUT} from "../actions";
 
 export default function (state = {}, action) {
-
+    console.log(action);
     switch (action.type) {
         case SIGN_IN_SUCCESSFUL:
             console.log(action);
