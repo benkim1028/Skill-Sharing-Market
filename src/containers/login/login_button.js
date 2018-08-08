@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from "react-redux";
 import {Link} from "react-router-dom";
-import {signOut, createAlertBar} from "../actions";
-import history from "../history";
+import {signOut, createAlertBar} from "../../actions/index";
+import history from "../../history";
 
 class loginButton extends Component {
     constructor(props){

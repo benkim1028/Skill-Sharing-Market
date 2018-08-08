@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { GoogleLogin } from 'react-google-login';
-import {showLoading, signIn} from "../actions/index";
+import {showLoading, signIn} from "../../actions/index";
 import {connect} from "react-redux";
-import history from "../history";
+import history from "../../history";
 
 
 
-class GoogleSignIn extends React.Component {
+class GoogleSignIn extends Component {
     constructor(props){
         super(props);
         this.responseGoogle = this.responseGoogle.bind(this);

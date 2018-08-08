@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import Header from "../../components/Common/Header";
-import Footer from "../../components/Common/Footer";
-import {Divider, List, ListItem, Paper} from "material-ui";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
+import {Divider, List, ListItem, Paper} from "@material-ui/core";
 import {connect} from "react-redux";
-import {fetchProfile, showLoading} from "../../actions/index";
+import {fetchProfile, showLoading} from "../actions/index";
 
-class Profile extends Component {
+class ItemDetail extends Component {
 
     componentDidMount() {
         this.props.showLoading();
@@ -22,12 +22,10 @@ class Profile extends Component {
                         <div className="row align-items-center">
                             <div className="col"/>
                             <div className="col-8">
-                                <h1>Your Personal Information</h1>
-                                <p>Manage this basic information – your name, email and phone number – to help others find you on
-                                    Google products like Hangouts, Gmail and Maps, and make it easier to get in touch. </p>
+                                <h1>Item Detail</h1>
                                 <Paper>
                                     <List>
-                                        <ListItem primaryText="Username"
+                                        <ListItem primaryText="Category"
                                                   secondaryText={this.props.profile.data.username}/><Divider/>
                                         <ListItem primaryText="First Name"
                                                   secondaryText={this.props.profile.data.firstname}/><Divider/>
@@ -65,4 +63,4 @@ function mapStateToProps(state) {
     return {profile: state.user};
 }
 
-export default connect(mapStateToProps, {fetchProfile, showLoading})(Profile);
+export default connect(mapStateToProps, {fetchProfile, showLoading})(ItemDetail);

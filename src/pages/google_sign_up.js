@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../../components/Common/Header";
-import Footer from "../../components/Common/Footer";
-import {signUp, showLoading} from "../../actions/index";
-import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
-import normalizePhone from "../../components/Tools/normalizePhone";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
+import {signUp, showLoading} from "../actions/index";
+import normalize_phone from "../components/Tools/normalize_phone";
+import {Paper, Radio, RadioGroup, Button, TextField, InputAdornment, FormControlLabel} from "@material-ui/core";
 
 class GoogleSignUp extends Component {
 
@@ -38,12 +37,21 @@ class GoogleSignUp extends Component {
 
     renderField(field) {
         const {meta: {touched, error}} = field;
+        // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
+
         return (
             <TextField
-                hintText={field.label}
-                floatingLabelText={field.label}
-                errorText={touched && error}
-                type={field.type ? "password" : "text"}
+                style={{textAlign: 'left'}}
+                id={field.label}
+                label={field.label}
+                error={touched && error}
+                multiline={field.multiLines}
+                rows={field.multiLines ? 5 : 1}
+                helperText={touched && error}
+                fullWidth
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"> </InputAdornment>,
+                }}
                 {...field.input}
             />
         )
@@ -52,27 +60,28 @@ class GoogleSignUp extends Component {
     renderDatePicker(field) {
         const {meta: { touched, error }, input} = field;
         return(
-            <DatePicker
-                errorText={touched && error}
+            <TextField
                 {...input}
-                value={input.value !== '' ? new Date(input.value) : null}
-                floatingLabelText={field.label}
-                onChange={(event, value) => {
-                    console.log(value);
-                    input.onChange(value)
+                type="date"
+                error={touched && error}
+                label={field.label}
+                fullWidth
+                InputLabelProps={{
+                    shrink: true,
                 }}/>
+
         )
     }
 
     renderRadioGroup({input, ...rest}) {
         return (
             <div>
-            <RadioButtonGroup
-                {...input}
-                {...rest}
-                valueSelected={input.value}
-                onChange={(event, value) => input.onChange(value)}
-            />
+                <RadioGroup
+                    {...input}
+                    {...rest}
+                    value={input.value}
+                    onChange={(event, value) => input.onChange(value)}
+                />
                 <p className='errorText'>{rest.meta.touched && rest.meta.error ? rest.meta.error : ''}</p>
             </div>
         )
@@ -92,20 +101,17 @@ class GoogleSignUp extends Component {
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <TextField
                                       defaultValue={this.props.location.state.username}
-                                      floatingLabelText="Username"
-                                      floatingLabelFixed={true}
+                                      label="Username"
                                       disabled={true}
                                 /><br/>
                                 <TextField
                                       defaultValue={this.props.location.state.lastname}
-                                      floatingLabelText="Last Name"
-                                      floatingLabelFixed={true}
+                                      label="Last Name"
                                       disabled={true}
                                 /><br/>
                                 <TextField
                                       defaultValue={this.props.location.state.firstname}
-                                      floatingLabelText="First Name"
-                                      floatingLabelFixed={true}
+                                      label="First Name"
                                       disabled={true}
                                 /><br/>
                                 <Field label="Create a password" name="password" type="password"
@@ -113,14 +119,14 @@ class GoogleSignUp extends Component {
                                 <Field label="Confirm your password" name="password2" type="password"
                                        component={this.renderField}/><br/>
                                 <Field label="Phone Number" name="phonenumber"
-                                        component={this.renderField} normalize={normalizePhone}/><br/>
+                                        component={this.renderField} normalize={normalize_phone}/><br/>
                                 <Field label="Birth Date" name="birthdate" component={this.renderDatePicker} hintText="Birth Date" autoOk={true} /><br/>
                                 <Field name="gender" component={this.renderRadioGroup}>
-                                    <RadioButton value="male" label="male" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
-                                    <RadioButton value="female" label="female" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
+                                    <FormControlLabel value="male" label="male" control={<Radio/>} style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
+                                    <FormControlLabel value="female" label="female" control={<Radio/>} style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
                                 </Field><br/>
-                                <RaisedButton type="submit" label="Sign Up" primary={true} style={{margin: 'auto'}}/>
-                                <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel"
+                                <Button type="submit" label="Sign Up" primary={true} style={{margin: 'auto'}}/>
+                                <Button onClick={() => this.props.history.push('/')} label="Cancel"
                                               secondary={true} style={{margin: '15px'}}/>
                                 {this.errorMessage()}
                             </form>

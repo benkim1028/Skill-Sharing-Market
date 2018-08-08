@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import Header from "./Common/Header";
-import Footer from "./Common/Footer";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
 import background from '../style/imgs/background.jpg';
 import soccer from '../style/imgs/Soccer.jpg';
 import music from '../style/imgs/Music.jpg';
-import {RaisedButton} from "material-ui";
+import {Button} from "@material-ui/core";
 
 const styles = {
     main_css : {
@@ -43,14 +43,14 @@ class Main_page extends Component {
                     <div className="textbox-right text-white">
                         <h1 className="main-header">Sports</h1>
                         <p>People around you have excellent talents in Sports: Soccer, Basketball, Badminton, Table Tennis, Tennis, Baseball, Hockey, etc. Do you want to learn them? We will find professionals for you.</p>
-                        <RaisedButton onClick={() => this.props.history.push("buy&sell/sports")}  primary={true} label="See Professionals"/>
+                        <Button onClick={() => this.props.history.push("buy&sell/sports")}  primary={true} label="See Professionals"/>
                     </div>
                 </div>
                 <div className="fullpage content" style={styles.music_css}>
                     <div className="textbox-left text-white">
                         <h1 className="main-header">Music</h1>
                         <p>Are you a talented music professional? Do you want to teach young students in you spare times? Withumb will make your life easier. Check out our list of young students who are passion of learning new musical instrument.</p>
-                        <RaisedButton onClick={() => this.props.history.push("buy&sell/music")}  primary={true} label="See Students"/>
+                        <Button onClick={() => this.props.history.push("buy&sell/music")}  primary={true} label="See Students"/>
                     </div>
                 </div>
                 <Footer/>

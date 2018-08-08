@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../../components/Common/Header";
-import Footer from "../../components/Common/Footer";
-import { createPost, showLoading } from "../../actions/index";
-import {AutoComplete, Paper, RaisedButton, TextField} from "material-ui";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
+import { createPost, showLoading } from "../actions/index";
+import {Paper, Button, TextField, InputAdornment} from "@material-ui/core";
+import ImgUploder from "../components/image_uploader";
 
 
 const dataSource = {sports: ["Soccer", "archery", "badminton", "baseball", "softball", "beach volleyball", "boxing", "canoe / kayak", "climbing", "cycling", "fencing"],
@@ -37,36 +37,20 @@ class PostsNewBuy extends Component {
         return (
             <TextField
                 style={{textAlign: 'left'}}
-                hintText={field.label}
-                floatingLabelText={field.label}
-                floatingLabelFixed={true}
-                errorText={touched && error}
-                multiLine={field.multiLines}
+                id={field.label}
+                label={field.label}
+                error={touched && error}
+                multiline={field.multiLines}
                 rows={field.multiLines ? 5 : 1}
+                helperText={touched && error}
+                fullWidth
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"> </InputAdornment>,
+                }}
                 {...field.input}
             />
         )
     }
-    renderAutoComplete(field){
-        const {meta: {touched, error}} = field;
-        // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
-
-        return (
-            <AutoComplete
-                style={{textAlign: 'left'}}
-                dataSource={dataSource[field.category]}
-                hintText={field.label}
-                maxSearchResults={6}
-                floatingLabelText={field.label}
-                floatingLabelFixed={true}
-                errorText={touched && error}
-                multiLine={field.multiLine}
-                rows={field.multiLine ? 5 : 1}
-                {...field.input}
-            />
-        )
-    }
-
 
     handleSubmit(values) {
         console.log(values);
@@ -91,12 +75,12 @@ class PostsNewBuy extends Component {
                             <Paper>
                                 <form onSubmit={handleSubmit(this.handleSubmit)}>
                                     <Field className="form-control" label="Skill Category" name="category" component={this.renderField}/><br/>
-                                    <Field name="subCategory" component={this.renderAutoComplete} label="Sub Category" category={this.props.match.params.category}/><br/>
+                                    <Field name="subCategory" component={this.renderField} label="Sub Category" category={this.props.match.params.category}/><br/>
                                     <Field className="form-control" label="Title" name="title" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Duration" name="duration" component={this.renderField}/><br/>
                                     <Field className="form-control" label="Description" name="description" component={this.renderField} multiLines={true}/><br/>
-                                    <RaisedButton type="submit" label="Create" primary={true} style={{margin: '15px'}} />
-                                    <RaisedButton onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.category}`)} label="Cancel" secondary={true} style={{margin: '15px'}} />
+                                    <Button type="submit" color="primary" variant="raised" style={{margin: '15px 15px 5px 5px'}}>Create</Button>
+                                    <Button onClick={() => this.props.history.push(`/buy&sell/${this.props.match.params.category}`)} variant="raised" color="secondary" style={{margin: '15px 15px 5px 5px'}}>Cancel</Button>
                                     {this.errorMessage()}
                                 </form>
                             </Paper>

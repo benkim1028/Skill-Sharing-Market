@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../../components/Common/Header";
-import Footer from "../../components/Common/Footer";
-import {signUp, showLoading} from "../../actions/index";
-import {DatePicker, Paper, RadioButton, RadioButtonGroup, RaisedButton, TextField} from "material-ui";
-import normalizePhone from "../../components/Tools/normalizePhone";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
+import {signUp, showLoading} from "../actions/index";
+import { Paper, FormControlLabel, Radio, RadioGroup, Button, TextField,InputAdornment} from "@material-ui/core";
+import normalize_phone from "../components/Tools/normalize_phone";
 
 class SignUp extends Component {
 
@@ -35,13 +35,22 @@ class SignUp extends Component {
 
     renderField(field) {
         const {meta: {touched, error}} = field;
+        // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (
             <TextField
-                hintText={field.label}
-                floatingLabelText={field.label}
-                errorText={touched && error}
+                style={{textAlign: 'left'}}
+                id={field.label}
+                label={field.label}
                 type={field.type ? "password" : "text"}
+                error={touched && error}
+                multiline={field.multiLines}
+                rows={field.multiLines ? 5 : 1}
+                helperText={touched && error}
+                fullWidth
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"> </InputAdornment>,
+                }}
                 {...field.input}
             />
         )
@@ -50,26 +59,26 @@ class SignUp extends Component {
     renderDatePicker(field) {
         const {meta: { touched, error }, input} = field;
         return(
-            <DatePicker
-                errorText={touched && error}
+            <TextField
                 {...input}
-                value={input.value !== '' ? new Date(input.value) : null}
-                floatingLabelText={field.label}
-                onChange={(event, value) => {
-                    console.log(value);
-                    input.onChange(value)
+                type="date"
+                error={touched && error}
+                label={field.label}
+                fullWidth
+                InputLabelProps={{
+                    shrink: true,
                 }}/>
+
         )
     }
 
     renderRadioGroup({input, ...rest}) {
-        console.log(rest)
         return (
             <div>
-            <RadioButtonGroup
+            <RadioGroup
                 {...input}
                 {...rest}
-                valueSelected={input.value}
+                value={input.value}
                 onChange={(event, value) => input.onChange(value)}
             />
                 <p className='errorText'>{rest.meta.touched && rest.meta.error ? rest.meta.error : ''}</p>
@@ -100,15 +109,14 @@ class SignUp extends Component {
                                 <Field label="Last name" name="lastname"
                                        component={this.renderField}/><br/>
                                 <Field label="Phone Number" name="phonenumber"
-                                        component={this.renderField} normalize={normalizePhone}/><br/>
+                                        component={this.renderField} normalize={normalize_phone}/><br/>
                                 <Field label="Birth Date" name="birthdate" component={this.renderDatePicker} hintText="Birth Date" autoOk={true} /><br/>
                                 <Field name="gender" component={this.renderRadioGroup}>
-                                    <RadioButton value="male" label="male" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
-                                    <RadioButton value="female" label="female" style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
+                                    <FormControlLabel value="male" label="male" control={<Radio/>} style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
+                                    <FormControlLabel value="female" label="female" control={<Radio/>} style={{width: '50%', marginLeft: '25%', marginRight: '25%'}}/>
                                 </Field><br/>
-                                <RaisedButton type="submit" label="Sign Up" primary={true} style={{margin: 'auto'}}/>
-                                <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel"
-                                              secondary={true} style={{margin: '15px'}}/>
+                                <Button type="submit" variant="raised" color="primary" style={{margin: '15px'}}>Sign Up</Button>
+                                <Button variant="raised" onClick={() => this.props.history.push('/')} color="secondary" style={{margin: '15px'}}>Cancel</Button>
                                 {this.errorMessage()}
                             </form>
                             </Paper>

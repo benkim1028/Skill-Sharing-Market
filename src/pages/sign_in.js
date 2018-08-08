@@ -3,12 +3,12 @@ import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 
-import Header from "../../components/Common/Header";
-import Footer from "../../components/Common/Footer";
-import { signIn, showLoading } from "../../actions/index";
-import {Paper, RaisedButton, TextField} from "material-ui";
-import GoogleSignIn from "../google_login";
-import FacebookSignIn from "../facebook_login";
+import Header from "../components/Common/header";
+import Footer from "../components/Common/footer";
+import { signIn, showLoading } from "../actions/index";
+import {Paper, Button, TextField, InputAdornment} from "@material-ui/core";
+import GoogleSignIn from "../containers/login/google_login";
+import FacebookSignIn from "../containers/login/facebook_login";
 
 class Login extends Component {
     constructor(props) {
@@ -31,13 +31,20 @@ class Login extends Component {
         // const className = `form-group ${touched && error ? 'has-danger' : ''}`;
 
         return (
-                <TextField
-                    hintText={field.label}
-                    floatingLabelText={field.label}
-                    errorText={touched && error}
-                    type={field.type ? "password" : "text"}
-                    {...field.input}
-                />
+            <TextField
+                style={{textAlign: 'left'}}
+                id={field.label}
+                label={field.label}
+                error={touched && error}
+                multiline={field.multiLines}
+                rows={field.multiLines ? 5 : 1}
+                helperText={touched && error}
+                fullWidth
+                InputProps={{
+                    startAdornment: <InputAdornment position="start"> </InputAdornment>,
+                }}
+                {...field.input}
+            />
         )
     }
 
@@ -68,17 +75,17 @@ class Login extends Component {
                             <form onSubmit={handleSubmit(this.handleSubmit)}>
                                 <Field className="form-control" label="Username" name="username" component={this.renderField}/><br/>
                                 <Field className="form-control" label="Password" name="password" type="password" component={this.renderField}/><br/>
-                                <RaisedButton type="submit" label="Login" primary={true} style={{margin: '15px'}} />
-                                <RaisedButton onClick={() => this.props.history.push('/')} label="Cancel" secondary={true} style={{margin: '15px'}} />
+                                <Button type="submit" variant="raised" color="primary" style={{margin: '15px'}}>Login</Button>
+                                <Button variant="raised" onClick={() => this.props.history.push('/')} color="secondary" style={{margin: '15px'}}>Cancel</Button>
+                                <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
                                 {this.errorMessage()}
                             </form>
                             </Paper>
                             <GoogleSignIn/><br/>
-                            <FacebookSignIn/><br/>
                         </div>
                         <div className="col"/>
                     </div>
-                        <p className="text">Don't have an account? <Link to="/signUp">Sign up</Link></p>
+
                 </div>
                 <Footer/>
             </div>

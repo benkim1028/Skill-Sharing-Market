@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import FacebookLogin from 'react-facebook-login';
-import {signIn, showLoading} from "../actions/index";
-import {RaisedButton} from "material-ui";
-import history from "../history";
+import {signIn, showLoading} from "../../actions/index";
+import {Button} from "@material-ui/core";
+import history from "../../history";
 import {connect} from 'react-redux';
 
-class FacebookSignIn extends React.Component {
+class FacebookSignIn extends Component {
     constructor(props){
         super(props);
         this.responseFacebook = this.responseFacebook.bind(this);
@@ -34,7 +34,7 @@ class FacebookSignIn extends React.Component {
                 callback={this.responseFacebook}
                 icon="fa-facebook"
                 render={props => (
-                    <RaisedButton {...props}>Login With Facebook</RaisedButton>
+                    <Button {...props}>Login With Facebook</Button>
                 )}
             />
         )

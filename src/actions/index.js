@@ -24,8 +24,8 @@ export const CREATE_POST = 'create_post';
     request: {username: benkim1028, password: Tkflzls1!}
     response: {token: asdfasdfasdfasdfasdfasdf}
  */
-const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
-//const BASE_URL = "http://localhost:8080/webapi";
+//const BASE_URL = "https://skillbackend.herokuapp.com/webapi";
+const BASE_URL = "http://localhost:8080/webapi";
 
 
 export function signIn(values, callback) {
@@ -163,7 +163,6 @@ export function fetchProfile() {
 }
 
 export function createPost(values, category, transaction, callback){
-
 
     const id = localStorage.getItem("userid");
     const token = localStorage.getItem("user");

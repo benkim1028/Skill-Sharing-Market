@@ -1,4 +1,4 @@
-const normalizePhone = value => {
+const normalize_phone = value => {
     if (!value) {
         return value
     }
@@ -16,4 +16,4 @@ const normalizePhone = value => {
     )}`
 }
 
-export default normalizePhone
+export default normalize_phone
