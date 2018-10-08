@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import {signUp, showLoading} from "../actions/index";
-import normalize_phone from "../components/Tools/normalize_phone";
+import normalize_phone from "../components/tools/normalize_phone";
 import {Paper, Radio, RadioGroup, Button, TextField, InputAdornment, FormControlLabel} from "@material-ui/core";
 
 class GoogleSignUp extends Component {

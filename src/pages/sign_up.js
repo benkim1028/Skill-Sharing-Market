@@ -6,7 +6,7 @@ import Header from "../components/Common/Header";
 import Footer from "../components/Common/Footer";
 import {signUp, showLoading} from "../actions/index";
 import { Paper, FormControlLabel, Radio, RadioGroup, Button, TextField,InputAdornment} from "@material-ui/core";
-import normalize_phone from "../components/Tools/normalize_phone";
+import normalize_phone from "../components/tools/normalize_phone";
 
 class SignUp extends Component {
 
