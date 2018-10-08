@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Snackbar} from '@material-ui/core';
 
+
 class AlertBar extends Component {
 
     render() {
