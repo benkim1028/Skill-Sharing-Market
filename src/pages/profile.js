@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import {Divider, List, ListItem, Paper, ListItemText} from "@material-ui/core";
 import {connect} from "react-redux";
 import {fetchProfile, showLoading} from "../actions/index";

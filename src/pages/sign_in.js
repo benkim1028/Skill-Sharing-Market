@@ -3,8 +3,8 @@ import {Link} from 'react-router-dom';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import { signIn, showLoading } from "../actions/index";
 import {Paper, Button, TextField, InputAdornment} from "@material-ui/core";
 import GoogleSignIn from "../containers/login/google_login";

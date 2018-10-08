@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import background from '../style/imgs/background.jpg';
 import soccer from '../style/imgs/Soccer.jpg';
 import music from '../style/imgs/Music.jpg';

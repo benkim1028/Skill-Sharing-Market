@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import { createPost, showLoading } from "../actions/index";
 import {Paper, Button, TextField, InputAdornment} from "@material-ui/core";
 import ImgUploder from "../components/image_uploader";

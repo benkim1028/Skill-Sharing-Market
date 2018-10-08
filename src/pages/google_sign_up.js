@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import {signUp, showLoading} from "../actions/index";
 import normalize_phone from "../components/Tools/normalize_phone";
 import {Paper, Radio, RadioGroup, Button, TextField, InputAdornment, FormControlLabel} from "@material-ui/core";

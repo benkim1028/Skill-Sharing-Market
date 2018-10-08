@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Tabs, Tab} from '@material-ui/core';
-import Header from "../components/Common/header";
-import Footer from "../components/Common/footer";
+import Header from "../components/Common/Header";
+import Footer from "../components/Common/Footer";
 import {Paper, Button} from "@material-ui/core";
 import ItemList from "../containers/items_list";
 
